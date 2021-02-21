@@ -1,8 +1,10 @@
 #!/usr/bin/php
 <?php
-require_once('path.inc');
-require_once('get_host_info.inc');
-require_once('rabbitMQLib.inc');
+require_once('Project/path.inc');
+require_once('Project/get_host_info.inc');
+require_once('Project/rabbitMQLib.inc');
+ini_set('Project/testRabbitMQ.ini');
+
 
 function doLogin($username,$password)
 {
