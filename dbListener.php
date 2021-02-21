@@ -14,7 +14,7 @@ function doLogin($username,$password)
 	 }
 
     // check Username
-    $Q="select* from testtable where username='$username'";
+    $Q="select* from testtable where usrname='$username'";
     $dbQuery=mysqli_query($db,$Q) or die (mysqli_error($db));
    //checks tho see
     if (mysqli_num_rows($dbQuery) == 0) {
