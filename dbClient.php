@@ -1,9 +1,9 @@
 #!/usr/bin/php
 <?php
-require_once('Project/path.inc');
-require_once('Project/get_host_info.inc');
-require_once('Project/rabbitMQLib.inc');
-ini_set('Project/testRabbitMQ.ini');
+require_once('RabbitMQ/path.inc');
+require_once('RabbitMQ/get_host_info.inc');
+require_once('RabbitMQ/rabbitMQLib.inc');
+ini_set('RabbitMQ/testRabbitMQ.ini','1');
 
 $client = new rabbitMQClient("testRabbitMQ.ini","testServer");
 if (isset($argv[1]))
