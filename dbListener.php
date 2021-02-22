@@ -15,6 +15,8 @@ function doLogin($username,$password)
 		 $msg="Data base could not be reached" .PHP_EOL;
 		 return $msg; 
 	 }
+    $username=cleanseInput($username,$db);
+    $password=cleanseInput($password,$db);
 
     // check Username
     $Q="select* from testtable where usrname='$username'";
@@ -24,7 +26,7 @@ function doLogin($username,$password)
 	    echo 'No username found';
 	    return FALSE;
     }
-    $record=mysqli_fetch_array($db,$dbQuery);
+    $record=mysqli_fetch_array($dbQuery);
     $recordPW=$record['password'];
 
     if (password_verify($password,$recordPW) == FALSE ){
@@ -33,6 +35,7 @@ function doLogin($username,$password)
     }
 
     echo "Authentication success" .PHP_EOL;
+    mysqli_close($db);
     return TRUE;
 }
 
@@ -54,6 +57,13 @@ function requestProcessor($request)
   return array("returnCode" => '0', 'message'=>"Server received request and processed");
 }
 
+function cleanseInput($input,$db){
+	
+	$input=mysqli_real_escape_string($db,$input);
+	$input= trim($input);
+	return($input);
+
+}
 $server = new rabbitMQServer("testRabbitMQ.ini","testServer");
 
 echo "testRabbitMQServer BEGIN".PHP_EOL;
