@@ -10,11 +10,10 @@ ini_set('RabbitMQ/testRabbitMQ.ini','1');
 function doLogin($username,$password)
 {
     //Initiate connection with DB
-    $db= mysqli_connect("127.0.0.1",'testuser','12345','testdb');	
-	 if(mysqli_connect_error() ){
-		 $msg="Data base could not be reached" .PHP_EOL;
-		 return $msg; 
-	 }
+    $db=dbConnect();
+    if($db == FALSE){
+   	return "Connection Refused";
+   	}
     $username=cleanseInput($username,$db);
     $password=cleanseInput($password,$db);
 
@@ -38,6 +37,38 @@ function doLogin($username,$password)
     mysqli_close($db);
     return TRUE;
 }
+function createAccount($username,$password){
+//Initiate connection with DB
+    $db=dbConnect();
+    if($db == FALSE){
+        return "Connection Refused";
+    }
+    $username=cleanseInput($username,$db);
+    $password=cleanseInput($password,$db);
+    echo $password . "is unhashed password";
+
+    // check Username
+    $Q="select* from testtable where usrname='$username'";
+    $dbQuery=mysqli_query($db,$Q) or die (mysqli_error($db));
+   //checks tho see
+    if (mysqli_num_rows($dbQuery) != 0) {
+            echo 'Username found: aborting operation';
+	    return FALSE;
+	   // use false return to reload page and say user already made
+    }
+   // Need to Hash password now
+    $hash =  password_hash($password,PASSWORD_DEFAULT);
+    $insert = "INSERT into testtable VALUES (userid,'$username','$hash')";
+
+    mysqli_query($db,$insert) or die (mysqli_error($db));
+    
+    //Return TRUE and transfer user to login page
+    return TRUE;
+   
+
+
+
+}
 
 function requestProcessor($request)
 {
@@ -52,7 +83,9 @@ function requestProcessor($request)
     case "login":
       return doLogin($request['username'],$request['password']);
     case "validate_session":
-      return doValidate($request['sessionId']);
+      return doValidate($request['sessionId']);   
+    case "create-account":
+      return createAccount($request['username'],$request['password']);
   }
   return array("returnCode" => '0', 'message'=>"Server received request and processed");
 }
@@ -62,6 +95,18 @@ function cleanseInput($input,$db){
 	$input=mysqli_real_escape_string($db,$input);
 	$input= trim($input);
 	return($input);
+
+}
+
+function dbConnect(){
+
+	$db=mysqli_connect("127.0.0.1",'testuser','12345','testdb');
+         if(mysqli_connect_error() ){
+		 echo "Data base could not be reached" .PHP_EOL;
+		 //maybe add log function (make server a client)
+	 }
+	return $db;
+
 
 }
 $server = new rabbitMQServer("testRabbitMQ.ini","testServer");
