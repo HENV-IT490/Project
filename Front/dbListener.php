@@ -1,8 +1,8 @@
 #!/usr/bin/php
 <?php
-require_once('RabbitMQ/path.inc');
-require_once('RabbitMQ/get_host_info.inc');
-require_once('RabbitMQ/rabbitMQLib.inc');
+require_once('../RabbitMQ/path.inc');
+require_once('../RabbitMQ/get_host_info.inc');
+require_once('../RabbitMQ/rabbitMQLib.inc');
 ini_set('frontRabbitMQ.ini','1');
 
 
@@ -109,7 +109,7 @@ function dbConnect(){
 
 
 }
-$server = new rabbitMQServer("testRabbitMQ.ini","testServer");
+$server = new rabbitMQServer("frontRabbitMQ.ini","testServer");
 
 echo "testRabbitMQServer BEGIN".PHP_EOL;
 $server->process_requests('requestProcessor');
