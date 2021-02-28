@@ -44,6 +44,7 @@
 </nav>
 
 <main class="form-signin">
+<<<<<<< HEAD
   <form>
     <h1 class="h3 mb-3 fw-normal">Create Account</h1>
     <label for="inputUsername" class="visually-hidden">Username</label>
@@ -51,6 +52,16 @@
     <label for="inputPassword" class="visually-hidden">Password</label>
     <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
     <button class="w-100 btn btn-lg btn-primary" type="submit">Create</button>
+=======
+  <form action='dbClient.php' method='post'>
+    <h1 class="h3 mb-3 fw-normal">Create Account</h1>
+    <label for="inputUsername" class="visually-hidden">Username</label>
+    <input type="username"name="username" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
+    <label for="inputPassword" class="visually-hidden">Password</label>
+    <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
+    <button class="w-100 btn btn-lg btn-primary" type="submit" name="submit"
+	    value="create-account">Create</button>
+>>>>>>> fc021a02e1e66f4a8f31f8b1447bd0f07e8651df
   </form>
 </main>
 
