@@ -10,7 +10,7 @@ ini_set('RabbitMQ/testRabbitMQ.ini','1');
 function doLogin($username,$password)
 {
     //Initiate connection with DB
-    $db= mysqli_connect("127.0.0.1",'testuser','12345','testdb');	
+    $db= mysqli_connect("127.0.0.1",'Admin','letsgetanA','projctdb');	
 	 if(mysqli_connect_error() ){
 		 $msg="Data base could not be reached" .PHP_EOL;
 		 return $msg; 
