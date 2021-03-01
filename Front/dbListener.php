@@ -18,7 +18,7 @@ function doLogin($username,$password)
     $password=cleanseInput($password,$db);
 
     // check Username
-    $Q="select* from testtable where usrname='$username'";
+    $Q="select* from Authentication where username='$username'";
     $dbQuery=mysqli_query($db,$Q) or die (mysqli_error($db));
    //checks tho see
     if (mysqli_num_rows($dbQuery) == 0) {
@@ -48,7 +48,7 @@ function createAccount($username,$password){
     echo $password . "is unhashed password";
 
     // check Username
-    $Q="select* from testtable where usrname='$username'";
+    $Q="select * from Authentication where username='$username'";
     $dbQuery=mysqli_query($db,$Q) or die (mysqli_error($db));
    //checks tho see
     if (mysqli_num_rows($dbQuery) != 0) {
@@ -58,7 +58,7 @@ function createAccount($username,$password){
     }
    // Need to Hash password now
     $hash =  password_hash($password,PASSWORD_DEFAULT);
-    $insert = "INSERT into testtable VALUES (userid,'$username','$hash')";
+    $insert = "INSERT into Authentication VALUES ('$username','$hash')";
 
     mysqli_query($db,$insert) or die (mysqli_error($db));
     
@@ -100,7 +100,7 @@ function cleanseInput($input,$db){
 
 function dbConnect(){
 
-	$db=mysqli_connect("127.0.0.1",'testuser','12345','testdb');
+	$db=mysqli_connect("127.0.0.1",'Admin','letsgetanA','projectdb');
          if(mysqli_connect_error() ){
 		 echo "Data base could not be reached" .PHP_EOL;
 		 //maybe add log function (make server a client)
