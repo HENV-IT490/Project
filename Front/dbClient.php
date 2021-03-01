@@ -3,7 +3,6 @@
 require_once('../RabbitMQ/path.inc');
 require_once('../RabbitMQ/get_host_info.inc');
 require_once('../RabbitMQ/rabbitMQLib.inc');
-ini_set('frontRabbitMQ.ini','1');
 
 
 if (isset($_POST['submit']))
@@ -38,6 +37,7 @@ if (isset($_POST['submit']))
 	
 	}
 }
+ $client = new rabbitMQClient("frontRabbitMQ.ini","testServer");
 
 $request = array();
 $request['type'] = "login";
