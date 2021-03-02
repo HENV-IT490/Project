@@ -1,14 +1,14 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="h-100">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.80.0">
-    <title>Starter Template · Bootstrap v5.0</title>
+    <title>Recipe</title>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/starter-template/">
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sticky-footer/">
 
     
 
@@ -17,8 +17,9 @@
 
     
     <!-- Custom styles for this template -->
-    <link href="starter-template.css" rel="stylesheet">
-    <link href="signin.css" rel="stylesheet">
+    <link href="sticky-footer.css" rel="stylesheet">
+  </head>
+  <body class="d-flex flex-column h-100"><link href="starter-template.css" rel="stylesheet">
   </head>
   <body>
     
@@ -44,16 +45,22 @@
     </div>
   </div>
 </nav>
-
-<main class="form-signin">
-  <form>
-    <h1 class="h3 mb-3 fw-normal">Favorites</h1>
-</form>
+    
+<!-- Begin page content -->
+<main class="flex-shrink-0">
+  <div class="container">
+    <h1 class="mt-5">Favorites:</h1>
+    <!--<p class="lead">Search up to 4 ingredients</p> -->
+  </div>
 </main>
 
+<footer class="footer mt-auto py-3 bg-light">
+  <div class="container">
+    <span class="text-muted">Place sticky footer content here.</span>
+  </div>
+</footer>
 
-    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
-      
+    
   </body>
 </html>
