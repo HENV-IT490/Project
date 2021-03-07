@@ -1,8 +1,8 @@
 #!/usr/bin/php
 <?php
-require_once('path.inc');
-require_once('get_host_info.inc');
-require_once('rabbitMQLib.inc');
+require_once('../RabbitMQ/path.inc');
+require_once('../RabbitMQ/get_host_info.inc');
+require_once('../RabbitMQ/rabbitMQLib.inc');
 
 function doLogin($username,$password)
 {
@@ -16,19 +16,12 @@ function requestProcessor($request)
 {
   echo "received request".PHP_EOL;
   var_dump($request);
-  if(!isset($request['type']))
-  {
-    return "ERROR: unsupported message type";
-  }
-  switch ($request['type'])
-  {
-    case "short-info":
-      return doLogin($request['username'],$request['password']);
-    case "full-info":
-      return doValidate($request['sessionId']);
-  }
-  passthru("python3 testing.py " .$request, $response);
-  return $response;
+ exec("python3 testing.py " .$request,$recipes);
+  echo"\n\n\n\n\n\n\n\n\n\n";
+  var_dump($recipes);
+
+
+  return $recipes;
 }
 
 $server = new rabbitMQServer("testRabbitMQ.ini","testServer");
