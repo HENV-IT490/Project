@@ -70,6 +70,11 @@ function createAccount($username,$password){
 
 }
 
+function doValidate($username,$sessionID){
+
+	return FALSE;
+}
+
 function requestProcessor($request)
 {
   echo "received request".PHP_EOL;
@@ -83,7 +88,7 @@ function requestProcessor($request)
     case "login":
       return doLogin($request['username'],$request['password']);
     case "validate_session":
-      return doValidate($request['sessionId']);   
+      return doValidate($request['username'],$request['sessionID']);   
     case "create-account":
       return createAccount($request['username'],$request['password']);
   }
