@@ -3,6 +3,7 @@
 require_once('../RabbitMQ/path.inc');
 require_once('../RabbitMQ/get_host_info.inc');
 require_once('../RabbitMQ/rabbitMQLib.inc');
+require('../Front/random.php');
 ini_set('frontRabbitMQ.ini','1');
 
 
@@ -14,13 +15,24 @@ if (isset($_POST['submit']))
 	switch($request['type']){
 
 	case "login":
+		$sessionToken=random_strings(10);
 		$request['username'] = $_POST['username'];
 		$request['password'] = $_POST['password'];
+		$request['sessionToken']=$sessionToken;
+
 		$response = $client->send_request($request);
+
+		if ($response == FALSE){
+		//redirect to error page
+
+		}
 		print_r($response);
-		//would return a redirect to the hello page with
-		// header(function) and set their session token to logged
+		echo								"<script>
+	sessionStorage.setItem('username','$request['username']);
+	sessionStorage.setItem('token', '$sessionToken');			</script>";
+		header('Location: http://127.0.0.1/Front/profile.html');
 		return;
+
 	case "create-account":
 		$request['username'] = $_POST['username'];
 		$request['password'] = $_POST['password'];

@@ -7,7 +7,7 @@ ini_set('frontRabbitMQ.ini','1');
 
 
 
-function doLogin($username,$password)
+function doLogin($username,$password,$sessionToken)
 {
     //Initiate connection with DB
     $db=dbConnect();
@@ -34,6 +34,8 @@ function doLogin($username,$password)
     }
 
     echo "Authentication success" .PHP_EOL;
+    $insertQ="insert into session('username','sessionToken') VALUES ('$username','$sessionToken')";
+    $dbQuery=mysqli_query($db,$Q) or die (mysqli_error($db));
     mysqli_close($db);
     return TRUE;
 }
@@ -70,9 +72,25 @@ function createAccount($username,$password){
 
 }
 
-function doValidate($username,$sessionID){
+function doValidate($username,$sessionToken){
 
-	return FALSE;
+	$db=dbConnect();
+	$q="select* from session where username='$username' AND sessionToken='$sessionToken'";
+	$dbQuery=mysqli_query($db,$Q) or die (mysqli_error($db));
+
+	if (mysqli_num_rows($dbQuery) != 1) {
+
+		echo 'Invalid user login, destroying session token';
+
+		$q="delete* from session where username='$username' AND sessionToken='$sessionToken'";
+
+		$dbQuery=mysqli_query($db,$Q) or die (mysqli_error($db));
+
+           	 return FALSE;
+	};
+	//else valid
+	return TRUE;
+		
 }
 
 function requestProcessor($request)
@@ -86,9 +104,9 @@ function requestProcessor($request)
   switch ($request['type'])
   {
     case "login":
-      return doLogin($request['username'],$request['password']);
+      return doLogin($request['username'],$request['password'],$request['sessionToken']);
     case "validate_session":
-      return doValidate($request['username'],$request['sessionID']);   
+      return doValidate($request['username'],$request['sessionToken']);   
     case "create-account":
       return createAccount($request['username'],$request['password']);
   }
