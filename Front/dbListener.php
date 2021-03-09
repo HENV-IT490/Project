@@ -40,10 +40,12 @@ function doLogin($username,$password,$sessionToken)
     if(mysqli_num_rows($checkQuery) != 0){
 	$deleteQ = "delete from session where username='$username'";
 	mysqli_query($db,$deleteQ) or die (mysqli_error($db));
+	echo "'$deleteQ' was the statement just executed";
     }
-
-    $insertQ="insert into Session('username','sessionToken') VALUES ('$username','$sessionToken')";
-    $dbQuery=mysqli_query($db,$insertQ) or die (mysqli_error($db));
+    echo "preparing insert Q"
+    $insertQ="insert into Session VALUES ('$username','$sessionToken')";
+    $insertQuery=mysqli_query($db,$insertQ) or die (mysqli_error($db));
+    echo "Insert Q worked";
     mysqli_close($db);
     return TRUE;
 }
