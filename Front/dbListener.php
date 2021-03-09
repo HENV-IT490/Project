@@ -38,7 +38,7 @@ function doLogin($username,$password,$sessionToken)
     $checkQuery=mysqli_query($db,$checkSessionQ) or die (mysqli_error($db));
 
     if(mysqli_num_rows($checkQuery) != 0){
-	$deleteQ = "delete from session where username='$username'";
+	$deleteQ = "delete from Session where username='$username'";
 	mysqli_query($db,$deleteQ) or die (mysqli_error($db));
 	echo "'$deleteQ' was the statement just executed";
     }
