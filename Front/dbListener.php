@@ -42,11 +42,11 @@ function doLogin($username,$password,$sessionToken)
 	mysqli_query($db,$deleteQ) or die (mysqli_error($db));
 	echo "'$deleteQ' was the statement just executed";
     }
-    echo "preparing insert Q"
-    $insertQ="insert into Session VALUES ('$username','$sessionToken')";
+    echo "preparing insert Q";
+    $insertQ="INSERT into Session VALUES ('$username','$sessionToken')";
     $insertQuery=mysqli_query($db,$insertQ) or die (mysqli_error($db));
     echo "Insert Q worked";
-    mysqli_close($db);
+    //mysqli_close($db);
     return TRUE;
 }
 function createAccount($username,$password){
