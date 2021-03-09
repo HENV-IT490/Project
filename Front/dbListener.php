@@ -35,7 +35,7 @@ function doLogin($username,$password,$sessionToken)
 
     echo "Authentication success" .PHP_EOL;
     $checkSessionQ="select* from session where username='$username'";
-    $checkQuery=mysqli_query($db,$checkQuery) or die (mysqli_error($db));
+    $checkQuery=mysqli_query($db,$checkSessionQ) or die (mysqli_error($db));
 
     if(mysql_num_rows($checkQuery) != 0){
 	$deleteQ = "delete* from session where username='$username'";
