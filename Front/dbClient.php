@@ -24,16 +24,15 @@ if (isset($_POST['submit']))
 		$response = $client->send_request($request);
 
 		if ($response == FALSE){
-		//redirect to error page
+		echo "this shit false";
 
 		}
-		print_r($response);
 
-		echo "<script>
+		/*echo "<script>
 	sessionStorage.setItem('username','$username');
-	sessionStorage.setItem('token', '$sessionToken');					    </script>";
+		sessionStorage.setItem('token', '$sessionToken');					    </script>";*/
 
-		header('Location: http://127.0.0.1/Front/Profile.html');
+		header('Location: http://127.0.0.1/Front/test.html');
 		return;
 
 	case "create-account":
@@ -43,13 +42,13 @@ if (isset($_POST['submit']))
 		//might have JS check if passwords are equal before allowing
 		//to submit if we have pw confirm.
 		$response= $client->send_request($request);
-		header("Location: http://127.0.0.1/Front/index.html");
-		exit();
+		header("refresh:0; url=http://127.0.0.1/Front/index.html");
   		//if response is true aka the account create
 		//redirect to another page or have them login now
 		//else, tell them account already exists or (later on we
 		//have to check for valid email address)
-		break;	
+
+		return;	
 	
 	}
 }

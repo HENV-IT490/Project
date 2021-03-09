@@ -75,14 +75,14 @@ function createAccount($username,$password){
 function doValidate($username,$sessionToken){
 
 	$db=dbConnect();
-	$q="select* from session where username='$username' AND sessionToken='$sessionToken'";
+	$Q="select* from session where username='$username' AND sessionToken='$sessionToken'";
 	$dbQuery=mysqli_query($db,$Q) or die (mysqli_error($db));
 
 	if (mysqli_num_rows($dbQuery) != 1) {
 
 		echo 'Invalid user login, destroying session token';
 
-		$q="delete* from session where username='$username' AND sessionToken='$sessionToken'";
+		$Q="delete* from session where username='$username' AND sessionToken='$sessionToken'";
 
 		$dbQuery=mysqli_query($db,$Q) or die (mysqli_error($db));
 
