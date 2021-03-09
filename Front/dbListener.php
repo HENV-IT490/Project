@@ -60,7 +60,7 @@ function createAccount($username,$password){
     }
    // Need to Hash password now
     $hash =  password_hash($password,PASSWORD_DEFAULT);
-    $insert = "INSERT into Authentication VALUES (userid,'$username','$hash')";
+    $insert = "INSERT into Authentication VALUES ('$username','$hash')";
 
     mysqli_query($db,$insert) or die (mysqli_error($db));
     
