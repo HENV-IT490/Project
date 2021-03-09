@@ -34,8 +34,16 @@ function doLogin($username,$password,$sessionToken)
     }
 
     echo "Authentication success" .PHP_EOL;
+    $checkSessionQ="select* from session where username='$username'";
+    $checkQuery=mysqli_query($db,$checkQuery) or die (mysqli_error($db));
+
+    if(mysql_num_rows($checkQuery) != 0){
+	$deleteQ = "delete* from session where username='$username'";
+	mysqli_query($db,$deleteQ) or die (mysqli_error($db));
+    }
+
     $insertQ="insert into session('username','sessionToken') VALUES ('$username','$sessionToken')";
-    $dbQuery=mysqli_query($db,$Q) or die (mysqli_error($db));
+    $dbQuery=mysqli_query($db,$insertQ) or die (mysqli_error($db));
     mysqli_close($db);
     return TRUE;
 }
