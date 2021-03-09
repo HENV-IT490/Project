@@ -34,7 +34,7 @@ function doLogin($username,$password,$sessionToken)
     }
 
     echo "Authentication success" .PHP_EOL;
-    $checkSessionQ="select* from session where username='$username'";
+    $checkSessionQ="select* from Session where username='$username'";
     $checkQuery=mysqli_query($db,$checkSessionQ) or die (mysqli_error($db));
 
     if(mysql_num_rows($checkQuery) != 0){
@@ -42,7 +42,7 @@ function doLogin($username,$password,$sessionToken)
 	mysqli_query($db,$deleteQ) or die (mysqli_error($db));
     }
 
-    $insertQ="insert into session('username','sessionToken') VALUES ('$username','$sessionToken')";
+    $insertQ="insert into Session('username','sessionToken') VALUES ('$username','$sessionToken')";
     $dbQuery=mysqli_query($db,$insertQ) or die (mysqli_error($db));
     mysqli_close($db);
     return TRUE;
@@ -83,14 +83,14 @@ function createAccount($username,$password){
 function doValidate($username,$sessionToken){
 
 	$db=dbConnect();
-	$Q="select* from session where username='$username' AND sessionToken='$sessionToken'";
+	$Q="select* from Session where username='$username' AND sessionToken='$sessionToken'";
 	$dbQuery=mysqli_query($db,$Q) or die (mysqli_error($db));
 
 	if (mysqli_num_rows($dbQuery) != 1) {
 
 		echo 'Invalid user login, destroying session token';
 
-		$Q="delete* from session where username='$username' AND sessionToken='$sessionToken'";
+		$Q="delete* from Session where username='$username' AND sessionToken='$sessionToken'";
 
 		$dbQuery=mysqli_query($db,$Q) or die (mysqli_error($db));
 
