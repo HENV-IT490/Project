@@ -19,6 +19,7 @@ if (isset($_POST['submit']))
 		$request['username'] = $_POST['username'];
 		$request['password'] = $_POST['password'];
 		$request['sessionToken']=$sessionToken;
+		$username=$request['username'];
 
 		$response = $client->send_request($request);
 
@@ -27,10 +28,12 @@ if (isset($_POST['submit']))
 
 		}
 		print_r($response);
-		echo								"<script>
-	sessionStorage.setItem('username','$request['username']);
-	sessionStorage.setItem('token', '$sessionToken');			</script>";
-		header('Location: http://127.0.0.1/Front/profile.html');
+
+		echo "<script>
+	sessionStorage.setItem('username','$username');
+	sessionStorage.setItem('token', '$sessionToken');					    </script>";
+
+		header('Location: http://127.0.0.1/Front/Profile.html');
 		return;
 
 	case "create-account":

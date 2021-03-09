@@ -43,7 +43,7 @@
 </nav>
     
 <main class="form-signin">
-  <form>
+  <form action='dbclient.php'>
     <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
     <label for="inputUsername" class="visually-hidden">Username</label>
     <input type="username" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
@@ -54,7 +54,7 @@
         <input type="checkbox" value="remember-me"> Remember me
       </label>
     </div>
-    <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+    <button class="w-100 btn btn-lg btn-primary" type="submit" value='login'>Sign in</button>
     <a href ="createaccount.html" >Create Account</a>
   </form>
 </main>
@@ -62,4 +62,13 @@
 
     
   </body>
+
+	<script>
+
+		if(sessionStorage.getItem('username')!=null || sessionStorage.getItem('sessionToken')!=null){
+		window.location.href="http://127.0.0.1/Front/Profile.html";
+		}
+
+
+	</script>
 </html>
