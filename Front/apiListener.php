@@ -16,7 +16,7 @@ function requestProcessor($request)
 {
   echo "received request".PHP_EOL;
   var_dump($request);
- exec("python3 testing.py " .$request,$recipes);
+  //exec("python3 testing.py " .$request,$recipes);
   echo"\n\n\n\n\n\n\n\n\n\n";
   var_dump($recipes);
 

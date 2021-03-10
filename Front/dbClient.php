@@ -54,7 +54,7 @@ if (isset($_POST['submit']))
 	}
 }
 
-/*$request = array();
+$request = array();
 $request['type'] = "login";
 $request['username'] = "mary";
 $request['password'] = "steve";
@@ -62,8 +62,8 @@ $response = $client->send_request($request);
 //$response = $client->publish($request)
 
 echo "client received response: ".PHP_EOL;
-print_r($response);*/
-echo "<h1>hello user,</h1>";
+print_r($response);
+echo "\n\n";
 
 echo $argv[0]." END".PHP_EOL;
 ?>
