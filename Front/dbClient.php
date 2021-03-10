@@ -28,11 +28,12 @@ if (isset($_POST['submit']))
 
 		}
 
-		/*echo "<script>
+		echo "<script>
+	var sessionStorage=window.sessionStorage;
 	sessionStorage.setItem('username','$username');
-		sessionStorage.setItem('token', '$sessionToken');					    </script>";*/
+		sessionStorage.setItem('token', '$sessionToken');					    </script>";
 
-		header('Location: http://127.0.0.1/Front/test.html');
+		header('refresh:2; url=http://127.0.0.1/Front/test.html');
 		return;
 
 	case "create-account":
