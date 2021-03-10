@@ -23,7 +23,7 @@ if (isset($_POST['submit']))
 
 		$response = $client->send_request($request);
 
-		if ($response == FALSE){
+		if ($response == false){
 		echo "this shit false";
 
 		}

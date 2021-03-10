@@ -11,7 +11,7 @@ function doLogin($username,$password,$sessionToken)
 {
     //Initiate connection with DB
     $db=dbConnect();
-    if($db == FALSE){
+    if($db == false){
    	return "Connection Refused";
    	}
     $username=cleanseInput($username,$db);
@@ -23,14 +23,14 @@ function doLogin($username,$password,$sessionToken)
    //checks tho see
     if (mysqli_num_rows($dbQuery) == 0) {
 	    echo 'No username found';
-	    return FALSE;
+	    return false;
     }
     $record=mysqli_fetch_array($dbQuery);
     $recordPW=$record['password'];
 
-    if (password_verify($password,$recordPW) == FALSE ){
+    if (password_verify($password,$recordPW) == false ){
     	echo "Username and Password combination is invalid" . PHP_EOL;
-	return FALSE;
+	return false;
     }
 
     echo "Authentication success" .PHP_EOL;
@@ -47,12 +47,12 @@ function doLogin($username,$password,$sessionToken)
     $insertQuery=mysqli_query($db,$insertQ) or die (mysqli_error($db));
     echo "Insert Q worked";
     //mysqli_close($db);
-    return TRUE;
+    return true;
 }
 function createAccount($username,$password){
 //Initiate connection with DB
     $db=dbConnect();
-    if($db == FALSE){
+    if($db == false){
         return "Connection Refused";
     }
     $username=cleanseInput($username,$db);
@@ -65,7 +65,7 @@ function createAccount($username,$password){
    //checks tho see
     if (mysqli_num_rows($dbQuery) != 0) {
             echo 'Username found: aborting operation';
-	    return FALSE;
+	    return false;
 	   // use false return to reload page and say user already made
     }
    // Need to Hash password now
@@ -74,8 +74,8 @@ function createAccount($username,$password){
 
     mysqli_query($db,$insert) or die (mysqli_error($db));
     
-    //Return TRUE and transfer user to login page
-    return TRUE;
+    //Return true and transfer user to login page
+    return true;
    
 
 
@@ -96,10 +96,10 @@ function doValidate($username,$sessionToken){
 
 		$dbQuery=mysqli_query($db,$Q) or die (mysqli_error($db));
 
-           	 return FALSE;
+           	 return false;
 	};
 	//else valid
-	return TRUE;
+	return true;
 		
 }
 
