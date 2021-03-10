@@ -20,7 +20,7 @@
 
 function check(data){
 
-	if (data == false || data == null || data.length==0){
+	if (data == false || data == null){
 
 		//sessionStorage.clear();
 		//window.location.href="http://127.0.0.1/Front/index.html";

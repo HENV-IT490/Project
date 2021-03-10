@@ -92,7 +92,7 @@ function doValidate($username,$sessionToken){
 
 		echo 'Invalid user login, destroying session token';
 
-		$Q="delete* from Session where username='$username' AND sessionToken='$sessionToken'";
+		$Q="delete from Session where username='$username' AND sessionToken='$sessionToken'";
 
 		$dbQuery=mysqli_query($db,$Q) or die (mysqli_error($db));
 
