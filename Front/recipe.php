@@ -50,9 +50,36 @@ THEN custom recipe next to comments table, however we will hide then until oncli
 */
 for($i=0;$i<count($analyzedResult['steps']);$i+=1){
 
-  echo" <h1> {$analyzedResult['steps'][$i]['step']}</h1>";
+  echo" <p> {$analyzedResult['steps'][$i]['step']}</p>";
 
 }
 
   
 ?>
+
+<!DOCTYPE html>
+<html>
+<head> <link rel="stylesheet" href="css.css">  </head>
+
+    <div id="respond">
+
+  <h3>Leave a Comment</h3>
+
+  <form action="post_comment.php" method="post" id="commentform">
+
+    <label for="comment_author" class="required">Your name</label>
+    <input type="text" name="comment_author" id="comment_author" value="" tabindex="1" required="required">
+    
+    <label for="Username" class="required">Username:</label>
+    <input type="Username" name="Username" id="Username" value="" tabindex="2" required="required">
+<br>
+      <br>
+    
+    <label for="Comment" class="required">Comment</label>
+    <textarea name="Comment" id="Comment" rows="10" tabindex="4"  required="required"></textarea>
+      
+    <input name="submit" type="submit" value="Submit comment" />
+
+        </form>
+    </div>
+</html>
