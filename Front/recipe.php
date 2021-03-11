@@ -22,10 +22,11 @@
 	  //  echo" <h1> {$analyzedResult['steps'][$i]['step']}</h1>";
 
 	for($j=0;$j<count($analyzedResult['steps'][$i]['ingredients']);$j+=1){
+    $ingredientName=$analyzedResult['steps'][$i]['ingredients'][$j]['name'];
+		echo "<p> {$ingredientName </p> </br>";
+    url=
 
-		echo "<p> {$analyzedResult['steps'][$i]['ingredients'][$j]['name']} </p> </br>";
-
-    }s
+    }
     }
 
 
