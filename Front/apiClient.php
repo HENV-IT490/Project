@@ -1,4 +1,4 @@
-#!/usr/bin/php
+
 <?php
     require_once('../RabbitMQ/path.inc');
     require_once('../RabbitMQ/get_host_info.inc');
@@ -19,18 +19,21 @@
 
     $string = file_get_contents("./data.json");
     $json_a = json_decode($string, true);
-    function onClickHyper()
+    
+   
+    $_SESSION['recipeCurrent'] = $json_a;
+
+   
+    $count=count($json_a['results']);
+   
+  //For substitution make a way to ignore required ingredients e.g. chicken in chicken marsala
+    for($i =0; $i < $count ; $i+=1)
     {
-        $_SESSION['recipeCurrent'] = $json_a['results'][0];
-    }
-    for($i =0; $i < 10; $i+=1)
-    {
-        echo "<html><a href='recipe.php' onClick='onClickHyper()'>{$json_a['results'][$i]['title']}</a></br><img></img><html>";
+        echo "<html><a href='recipe.php?id=$i'> {$json_a['results'][$i]['title']}</a></br><img src={$json_a['results'][$i]['image']} ></img></br><html>";
     }
 
     echo "<html><h1>{$json_a['results'][0]['title']}</h1><html>";
     print_r($json_a['results'][0]);
-
     // foreach($json_a as $k => $v)
     // {
     //     echo "<h1>{$k}</h1></br><h1>{$v}</h1>"; 
