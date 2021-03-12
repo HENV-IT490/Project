@@ -50,7 +50,11 @@ if (isset($_POST['submit']))
 		//have to check for valid email address)
 
 		return;	
-	
+	case "favorites":
+		$request['username'] = $_POST['username'];
+		$request['favoriteName']= $_POST['favoriteName'];
+		$response=$client->send_request($request);
+		return $reponse;
 	}
 }
 

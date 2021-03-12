@@ -47,13 +47,35 @@
 
 <main class="form-signin">
   <form>
-    <h1 class="h3 mb-3 fw-normal">Favorites</h1>
+    <h1 class="h3 mb-3 fw-normal" id="favoriteList">Favorites </h1>
+    <p>hi</p>
 </form>
 </main>
 
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="http://127.0.0.1/Front/sessionValidate.js"></script>
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
       
   </body>
+  <script>
+    $(document).ready(function(){
+      var username=sessionStorage.getItem('username');
+      $.post('http://127.0.0.1/Front/dbClient.php',{submit: "getFav", username: username}, function (data) {
+
+        for(var i=0; i< data.length; i+=1){
+        var src="<a href='recipe.php?recipe=" + data[i] +"&type=getName'> </a>";
+        $("#favoriteList").after(src);
+
+        }
+        
+      })
+
+
+
+
+    })
+
+
+  </script>
 </html>

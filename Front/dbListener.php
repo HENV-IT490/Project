@@ -103,6 +103,25 @@ function doValidate($username,$sessionToken){
 		
 }
 
+function makeFavorite($username, $recipe){
+
+  $db=dbConnect();
+    if($db == false){
+        return "DB Connection Refused";
+    }
+  $username=cleanseInput($username,$db);
+  $recipe=cleanseInput($recipe,$db);
+  $Q="select* from Session where username='$username' AND recipeName='$recipe'";
+  $dbQuery=mysqli_query($db,$Q) or die (mysqli_error($db));
+
+	if (mysqli_num_rows($dbQuery) != 1) {
+    $insertQ="insert into Favorites VALUES(id,$username,$recipe)";
+    return true;  
+  }
+  $deleteQ="delete from Favorites where username='$username' and recipeName='$recipe'";
+  $deleteQuery=mysqli_query($db,$deleteQ) or die (mysqli_error($db));
+  return false;
+}
 function requestProcessor($request)
 {
   echo "received request".PHP_EOL;
@@ -119,6 +138,8 @@ function requestProcessor($request)
       return doValidate($request['username'],$request['sessionToken']);   
     case "create-account":
       return createAccount($request['username'],$request['password']);
+    case "favorite":
+      return makeFavorite($request['username'],$request['favoriteName']);
   }
   return array("returnCode" => '0', 'message'=>"Server received request and processed");
 }
@@ -142,6 +163,10 @@ function dbConnect(){
 
 
 }
+
+
+
+
 $server = new rabbitMQServer("frontRabbitMQ.ini","testServer");
 
 echo "testRabbitMQServer BEGIN".PHP_EOL;
@@ -149,4 +174,3 @@ $server->process_requests('requestProcessor');
 echo "testRabbitMQServer END".PHP_EOL;
 exit();
 ?>
-
