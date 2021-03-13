@@ -111,11 +111,11 @@ function makeFavorite($username, $recipe){
     }
   $username=cleanseInput($username,$db);
   $recipe=cleanseInput($recipe,$db);
-  $Q="select* from Session where username='$username' AND recipeName='$recipe'";
+  $Q="select* Favorites where username='$username' AND recipeName='$recipe'";
   $dbQuery=mysqli_query($db,$Q) or die (mysqli_error($db));
 
 	if (mysqli_num_rows($dbQuery) != 1) {
-    $insertQ="insert into Favorites VALUES(id,$username,$recipe)";
+    $insertQ="insert into Favorites VALUES($username,$recipe)";
     return true;  
   }
   $deleteQ="delete from Favorites where username='$username' and recipeName='$recipe'";
