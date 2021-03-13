@@ -116,10 +116,12 @@ function makeFavorite($username, $recipe){
 
 	if (mysqli_num_rows($dbQuery) != 1) {
     $insertQ="insert into Favorites VALUES($username,$recipe)";
+    echo "adding $recipe to $username favorites";
     return true;  
   }
   $deleteQ="delete from Favorites where username='$username' and recipeName='$recipe'";
   $deleteQuery=mysqli_query($db,$deleteQ) or die (mysqli_error($db));
+  echo "removing $recipe from $username favorites";
   return false;
 }
 function requestProcessor($request)

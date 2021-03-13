@@ -6,9 +6,8 @@
   session_start();
 
   echo"<script src='https://code.jquery.com/jquery-3.6.0.min.js'> </script>";
-  echo "<src='http://127.0.0.1/Front/sessionValidate.js'> </src>";
-
   $id=$_GET['id'];
+  echo"<p> $id</p>";
   $client = new rabbitMQClient("testRabbitMQ.ini","testServer");
   $json =$_SESSION['recipeCurrent'];
   $recipe=$json['results'][$id]['title'];
@@ -58,13 +57,13 @@ for($i=0;$i<count($analyzedResult['steps']);$i+=1){
 }
 
 echo" <script>
-$('#favorite').onClick(function(){
+$('#favorite').click(function(){
 // doing this because didn't connect sessionvalidate yet
-var sessionStorage=windows.sessionStorage;
+var sessionStorage=window.sessionStorage;
 sessionStorage.setItem('username','nick123');
 var username=sessionStorage.getItem('username');
 var favID=$('#favorite').val();
-.$post('../Front/dbClient.php', { username: username, favoriteName: favID, submit: 'favorite' }, function(data){
+$.post('http://127.0.0.1/Front/dbClient.php', { username: username, favoriteName: favID, submit: 'favorites' }, function(data){
   if(data != true) {
     alert('Removed recipe from Favorites!');
   }
