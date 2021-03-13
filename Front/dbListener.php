@@ -140,7 +140,7 @@ function requestProcessor($request)
       return doValidate($request['username'],$request['sessionToken']);   
     case "create-account":
       return createAccount($request['username'],$request['password']);
-    case "favorite":
+    case "favorites":
       return makeFavorite($request['username'],$request['favoriteName']);
   }
   return array("returnCode" => '0', 'message'=>"Server received request and processed");
