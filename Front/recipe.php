@@ -1,4 +1,4 @@
-#!/usr/bin/php
+
 <?php
   require_once('../RabbitMQ/path.inc');
   require_once('../RabbitMQ/get_host_info.inc');
@@ -13,7 +13,7 @@
   $recipe=$json['results'][$id]['title'];
   $recipeImg=$json['results'][$id]['image'];
   $analyzedResult=$json['results'][$id]['analyzedInstructions'][0];
-  echo "<h1>$recipe <button type='button' name='favorite' id='favorite' value=$recipe> Favorite</button> </h1>";
+  echo "<h1>$recipe <button type='button' name='favorite' id='favorite' value='$recipe'> Favorite</button> </h1>";
 
   echo "<img src=$recipeImg> </img></br>";
   //echo "<h1>your mom gay {$json['results'][$id]['analyzedInstructions'][0]['steps']}";
@@ -56,19 +56,20 @@ for($i=0;$i<count($analyzedResult['steps']);$i+=1){
 
 }
 
-echo" <script>
+echo" <script> 
+
 $('#favorite').click(function(){
 // doing this because didn't connect sessionvalidate yet
 var sessionStorage=window.sessionStorage;
 sessionStorage.setItem('username','nick123');
 var username=sessionStorage.getItem('username');
 var favID=$('#favorite').val();
-$.post('http://127.0.0.1/Front/dbClient.php', { username: username, favoriteName: favID, submit: 'favorites' }, function(data){
-  if(data != true) {
-    alert('Removed recipe from Favorites!');
-  }
-  alert('Added recipe to Favorites!');
+$.post('http://127.0.0.1/Front/dbClient.php', { username: username, favoriteName: favID, submit: 'favorites'},function(data){
 
+  if(data!=false){ alert('added dish to favorites');}
+  else{ 
+    alert('removed dish from favorites');
+  }
 });
 
 });

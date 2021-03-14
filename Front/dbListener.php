@@ -125,6 +125,29 @@ function makeFavorite($username, $recipe){
   echo "removing $recipe from $username favorites";
   return false;
 }
+
+function getFav($username){
+  $db=dbConnect();
+  if($db == false){
+    echo "DB connection failed";
+    return false;
+  }
+  $username=cleanseInput($username,$db);
+  $sql=mysqli_query($db,"select recipeName from Favorites where username='$username'") or die(mysqli_error($db));
+  $recipe=array();
+  $counter=0;
+  while($get=mysqli_fetch_array($sql)){
+    
+    $recipe[$counter]=$get['recipeName'];
+    $counter+=1;
+    
+  }
+  for($i=0; $i<count($recipe);$i=$i+1){
+    echo"$recipe[$i]";
+  }
+  return $recipe;
+}
+
 function requestProcessor($request)
 {
   echo "received request".PHP_EOL;
@@ -143,6 +166,8 @@ function requestProcessor($request)
       return createAccount($request['username'],$request['password']);
     case "favorites":
       return makeFavorite($request['username'],$request['favoriteName']);
+    case "getFav":
+      return getFav($request['username']);
   }
   return array("returnCode" => '0', 'message'=>"Server received request and processed");
 }

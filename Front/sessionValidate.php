@@ -13,7 +13,8 @@ $client = new rabbitMQClient("frontRabbitMQ.ini","testServer");
 
 $response = $client->send_request($request);
 
-return $response;
+echo "hi im carl";
+exit();
 
 echo "$response";
 

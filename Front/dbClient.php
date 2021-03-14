@@ -1,4 +1,3 @@
-#!/usr/bin/php
 <?php
 require_once('../RabbitMQ/path.inc');
 require_once('../RabbitMQ/get_host_info.inc');
@@ -23,17 +22,17 @@ if (isset($_POST['submit']))
 
 		$response = $client->send_request($request);
 
-		if ($response == false){
-		echo "this shit false";
-
+		if ($response==false){
+			echo ("false");
+			header("Location:http://127.0.0.1/Front/index.html");
 		}
 
 		echo "<script>
-	var sessionStorage=window.sessionStorage;
-	sessionStorage.setItem('username','$username');
-		sessionStorage.setItem('token', '$sessionToken');					    </script>";
+		var sessionStorage=window.sessionStorage;
+		sessionStorage.setItem('username','$username');
+		sessionStorage.setItem('token', '$sessionToken');</script>";
 
-		header('refresh:2; url=http://127.0.0.1/Front/test.html');
+		header('refresh:2;url=http://127.0.0.1/Front/test.html');
 		return;
 
 	case "create-account":
@@ -54,7 +53,15 @@ if (isset($_POST['submit']))
 		$request['username'] = $_POST['username'];
 		$request['favoriteName']= $_POST['favoriteName'];
 		$response=$client->send_request($request);
-		return $reponse;
+		echo "$response";
+		exit();
+	case "getFav":
+		$request['username']= $_POST['username'];
+		$response=$client->send_request($request);
+		$new=json_encode($response,true);
+		echo "$new";
+		exit();
+
 	}
 }
 
