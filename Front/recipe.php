@@ -11,8 +11,10 @@
   $client = new rabbitMQClient("testRabbitMQ.ini","testServer");
   $json =$_SESSION['recipeCurrent'];
   $recipe=$json['results'][$id]['title'];
+  $recipeID=$json['results'][$id]['id'];
   $recipeImg=$json['results'][$id]['image'];
   $analyzedResult=$json['results'][$id]['analyzedInstructions'][0];
+  echo "<h1 id='favoriteID' hidden='true'>'$recipeID' </h1>";
   echo "<h1>$recipe <button type='button' name='favorite' id='favorite' value='$recipe'> Favorite</button> </h1>";
 
   echo "<img src=$recipeImg> </img></br>";
@@ -63,8 +65,9 @@ $('#favorite').click(function(){
 var sessionStorage=window.sessionStorage;
 sessionStorage.setItem('username','nick123');
 var username=sessionStorage.getItem('username');
-var favID=$('#favorite').val();
-$.post('http://127.0.0.1/Front/dbClient.php', { username: username, favoriteName: favID, submit: 'favorites'},function(data){
+var favName=$('#favorite').val();
+var favID=document.getElementById('favoriteID').textContent;
+$.post('http://127.0.0.1/Front/dbClient.php', { username: username, favoriteID: favID, favoriteName: favName, submit: 'favorites'},function(data){
 
   if(data!=false){ alert('added dish to favorites');}
   else{ 

@@ -52,6 +52,7 @@ if (isset($_POST['submit']))
 	case "favorites":
 		$request['username'] = $_POST['username'];
 		$request['favoriteName']= $_POST['favoriteName'];
+		$request['favoriteID']=$_POST['favoriteID'];
 		$response=$client->send_request($request);
 		echo "$response";
 		exit();

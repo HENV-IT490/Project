@@ -103,7 +103,7 @@ function doValidate($username,$sessionToken){
 		
 }
 
-function makeFavorite($username, $recipe){
+function makeFavorite($username, $recipe,$recipeID){
 
   $db=dbConnect();
     if($db == false){
@@ -111,11 +111,12 @@ function makeFavorite($username, $recipe){
     }
   $username=cleanseInput($username,$db);
   $recipe=cleanseInput($recipe,$db);
+  $recipeID=cleanseInput($recipeID,$db);
   $Q="select * from Favorites where username='$username' AND recipeName='$recipe'";
   $dbQuery=mysqli_query($db,$Q) or die (mysqli_error($db));
 
 	if (mysqli_num_rows($dbQuery) != 1) {
-    $insertQ="insert into Favorites VALUES('$username','$recipe')";
+    $insertQ="insert into Favorites VALUES('$username','$recipe','$recipeID')";
     mysqli_query($db,$insertQ) or die (mysqli_error($db));
     echo "adding $recipe to $username favorites";
     return true;  
@@ -133,18 +134,19 @@ function getFav($username){
     return false;
   }
   $username=cleanseInput($username,$db);
-  $sql=mysqli_query($db,"select recipeName from Favorites where username='$username'") or die(mysqli_error($db));
+  $sql=mysqli_query($db,"select recipeName,recipeID from Favorites where username='$username'") or die(mysqli_error($db));
   $recipe=array();
   $counter=0;
   while($get=mysqli_fetch_array($sql)){
-    
-    $recipe[$counter]=$get['recipeName'];
+    $recipe['Recipe'][$counter]['Title']=$get['recipeName'];
+    $recipe['Recipe'][$counter]['recipeID']=$get['recipeID'];
     $counter+=1;
     
   }
-  for($i=0; $i<count($recipe);$i=$i+1){
+  /*for($i=0; $i<count($recipe);$i=$i+1){
     echo"$recipe[$i]";
-  }
+  }*/
+  var_dump($recipe);
   return $recipe;
 }
 
@@ -165,7 +167,7 @@ function requestProcessor($request)
     case "create-account":
       return createAccount($request['username'],$request['password']);
     case "favorites":
-      return makeFavorite($request['username'],$request['favoriteName']);
+      return makeFavorite($request['username'],$request['favoriteName'],$request['favoriteID']);
     case "getFav":
       return getFav($request['username']);
   }
