@@ -69,6 +69,7 @@
         for(var i=0; i< result.Recipe.length; i+=1){
         var str1="http://127.0.0.1/recipe.php?recipe="
         var str2=result.Recipe[i].recipeID;
+        console.log(result.Recipe[i].recipeID);
         var str3="&type=getName";
         var aref=str1+str2+str3;
         console.log(aref);

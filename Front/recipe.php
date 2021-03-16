@@ -7,14 +7,19 @@
 
   echo"<script src='https://code.jquery.com/jquery-3.6.0.min.js'> </script>";
   $id=$_GET['id'];
-  echo"<p> $id</p>";
+  $type=$_GET['type'];
+  if($type=='getName'){
+
+  }
+  else{
   $client = new rabbitMQClient("testRabbitMQ.ini","testServer");
   $json =$_SESSION['recipeCurrent'];
   $recipe=$json['results'][$id]['title'];
   $recipeID=$json['results'][$id]['id'];
   $recipeImg=$json['results'][$id]['image'];
   $analyzedResult=$json['results'][$id]['analyzedInstructions'][0];
-  echo "<h1 id='favoriteID' hidden='true'>'$recipeID' </h1>";
+}
+  echo "<h1 id='favoriteID' hidden='true'>$recipeID</h1>";
   echo "<h1>$recipe <button type='button' name='favorite' id='favorite' value='$recipe'> Favorite</button> </h1>";
 
   echo "<img src=$recipeImg> </img></br>";
@@ -29,7 +34,7 @@
     for($j=0;$j<count($analyzedResult['steps'][$i]['ingredients']);$j+=1)
     {
       $ingredientName=$analyzedResult['steps'][$i]['ingredients'][$j]['name'];
-      echo "<ui> $ingredientName</ul> </br> ";
+      echo "<ui>•$ingredientName</ul> </br> ";
       /* 
         get_file_contents url . $ingredientName  ( get request and returns json format string)
         decode json file
@@ -53,8 +58,8 @@ cooking instructions/ steps do the same sort of for loop as above
 THEN custom recipe next to comments table, however we will hide then until onclick
 */
 for($i=0;$i<count($analyzedResult['steps']);$i+=1){
-
-  echo" <p> {$analyzedResult['steps'][$i]['step']}</p>";
+  $k=$i+1;
+  echo" <p>$k. {$analyzedResult['steps'][$i]['step']}</p>";
 
 }
 
@@ -78,5 +83,7 @@ $.post('http://127.0.0.1/Front/dbClient.php', { username: username, favoriteID: 
 });
 
 </script>";
-  
+/*session_unset();
+$_SESSION=array();
+session_destroy();*/
 ?>

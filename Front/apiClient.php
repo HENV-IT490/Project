@@ -5,6 +5,13 @@
     require_once('../RabbitMQ/rabbitMQLib.inc');
     session_start();
     $client = new rabbitMQClient("testRabbitMQ.ini","testServer");
+    if($_GET['type']=='getName'){
+      $request=Array();
+      $request['type']=$_GET['type'];
+      $request['recipeID']=$_GET['recipeID'];
+      $response=$client->send_request($request);
+
+    }
 
     //$request = $_POST['ingredient'];
     // $request= "chicken";

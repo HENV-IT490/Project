@@ -4,16 +4,26 @@ require_once('../RabbitMQ/path.inc');
 require_once('../RabbitMQ/get_host_info.inc');
 require_once('../RabbitMQ/rabbitMQLib.inc');
 
-function doLogin($username,$password)
+function getRecipe($recipeID)
 {
     // lookup username in databas
     // check password
     return true;
     //return false if not valid
 }
+function getAlt($ingredient){
+  exec("python3 testing.py " .$ingredient,$alternative);
+  return $alternative;
+}
 
 function requestProcessor($request)
-{
+{ 
+  switch($request['type']){
+    case 'getName':
+      return getRecipe($request['recipeID']);
+    case 'getAlt':
+      return getAlt($request['ingredient']);
+  }
   echo "received request".PHP_EOL;
   var_dump($request);
   //exec("python3 testing.py " .$request,$recipes);
