@@ -48,17 +48,17 @@
     {
       $ingredientName=$analyzedResult['steps'][$i]['ingredients'][$j]['name'];
       echo "<ui>•$ingredientName</ul> </br> ";
-      /* 
-        get_file_contents url . $ingredientName  ( get request and returns json format string)
-        decode json file
-        then do for loop for ingredients, or ONLY 1
-
-      */
-      $url="http://127.0.0.1/Front/apiClient.php?type=getAlt&ingredientName=butter";
-      $jsonAlt=file_get_contents($url,false);
-      //$alternative=json_decode($jsonAlt,true);
-        echo "<p> $ingredientName alternative: $jsonAlt </p> </br>";
-
+     /*  commenting this out as it will take alot of api calls
+      $urlIngredient=str_replace(' ', '%20',$ingredientName);
+      $getdata = http_build_query(
+        array(
+          'type' => 'getAlt',
+          'ingredientName' => $urlIngredient
+        )
+     );
+     $url="http://127.0.0.1/Front/apiClient.php?" ;
+     $jsonAlt=file_get_contents($url.$getdata,false);
+        echo "<p> $ingredientName alternative: $jsonAlt </p> </br>";*/
       }
     }
 

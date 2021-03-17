@@ -3,12 +3,11 @@ require_once('../RabbitMQ/path.inc');
 require_once('../RabbitMQ/get_host_info.inc');
 require_once('../RabbitMQ/rabbitMQLib.inc');
 require('../Front/random.php');
-ini_set('frontRabbitMQ.ini','1');
 
 
 if (isset($_POST['submit']))
 {
-	$client = new rabbitMQClient("frontRabbitMQ.ini","testServer");
+	$client = new rabbitMQClient("../ini/dbRabbitMQ.ini","dbListener");
 	$request = array();
 	$request['type']=$_POST['submit'];
 	switch($request['type']){

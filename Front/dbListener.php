@@ -3,7 +3,7 @@
 require_once('../RabbitMQ/path.inc');
 require_once('../RabbitMQ/get_host_info.inc');
 require_once('../RabbitMQ/rabbitMQLib.inc');
-ini_set('frontRabbitMQ.ini','1');
+
 
 
 
@@ -44,7 +44,7 @@ function doLogin($username,$password,$sessionToken)
     }
     echo "preparing insert Q";
     $insertQ="INSERT into Session VALUES ('$username','$sessionToken')";
-    $insertQuery=mysqli_query($db,$insertQ) or die sendLog((mysqli_error($db)));
+    $insertQuery=mysqli_query($db,$insertQ) or sendLog(die(mysqli_error($db)));
     echo "Insert Q worked";
     //mysqli_close($db);
     return true;
@@ -197,7 +197,7 @@ function dbConnect(){
 
 
 
-$server = new rabbitMQServer("frontRabbitMQ.ini","testServer");
+$server = new rabbitMQServer("../ini/dbRabbitMQ.ini","dbListener");
 
 echo "testRabbitMQServer BEGIN".PHP_EOL;
 $server->process_requests('requestProcessor');

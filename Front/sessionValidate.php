@@ -8,7 +8,7 @@ $request=array();
 $request['type']= 'validate_session';
 $request['sessionToken'] = $_POST['token'];
 $request['username'] = $_POST['username'];
-$client = new rabbitMQClient("frontRabbitMQ.ini","testServer");
+$client = new rabbitMQClient("../ini/dbRabbitMQ.ini","dbListener");
 
 
 $response = $client->send_request($request);

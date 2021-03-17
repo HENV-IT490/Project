@@ -17,9 +17,15 @@ function getAlt($ingredient){
   $alternative=file_get_contents("https://api.spoonacular.com/food/ingredients/substitutes?$apiKey&ingredientName=$ingredient");
   var_dump($alternative);
   $dencodeAlt=json_decode($alternative,true);
-  
+  if($dencodeAlt['status'] == "failure" ){
+    echo "No alternative found";
+    return "No alternative found";
+  }
+  echo $dencodeAlt['substitutes'][0];
   return $dencodeAlt['substitutes'][0];
-}
+  }
+  
+  
 
 function requestProcessor($request)
 { 
@@ -40,7 +46,7 @@ function requestProcessor($request)
   return $recipes;
 }
 
-$server = new rabbitMQServer("testRabbitMQ.ini","testServer");
+$server = new rabbitMQServer("../ini/apiRabbitMQ.ini","apiListener");
 $apiKey="apiKey=e0dfc176edf3449794fdc1aa311bc990";
 echo "testRabbitMQServer BEGIN".PHP_EOL;
 $server->process_requests('requestProcessor');

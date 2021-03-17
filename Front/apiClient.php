@@ -4,7 +4,7 @@
     require_once('../RabbitMQ/get_host_info.inc');
     require_once('../RabbitMQ/rabbitMQLib.inc');
     session_start();
-    $client = new rabbitMQClient("testRabbitMQ.ini","testServer");
+    $client = new rabbitMQClient("../ini/apiRabbitMQ.ini","apiListener");
     if(isset($_GET['type'])){
       
       $request=Array();
