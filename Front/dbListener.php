@@ -35,16 +35,16 @@ function doLogin($username,$password,$sessionToken)
 
     echo "Authentication success" .PHP_EOL;
     $checkSessionQ="select* from Session where username='$username'";
-    $checkQuery=mysqli_query($db,$checkSessionQ) or die (mysqli_error($db));
+    $checkQuery=mysqli_query($db,$checkSessionQ) or sendLog(die (mysqli_error($db)));
 
     if(mysqli_num_rows($checkQuery) != 0){
 	$deleteQ = "delete from Session where username='$username'";
-	mysqli_query($db,$deleteQ) or die (mysqli_error($db));
+	mysqli_query($db,$deleteQ) or sendLog(die (mysqli_error($db)));
 	echo "'$deleteQ' was the statement just executed";
     }
     echo "preparing insert Q";
     $insertQ="INSERT into Session VALUES ('$username','$sessionToken')";
-    $insertQuery=mysqli_query($db,$insertQ) or die (mysqli_error($db));
+    $insertQuery=mysqli_query($db,$insertQ) or die sendLog((mysqli_error($db)));
     echo "Insert Q worked";
     //mysqli_close($db);
     return true;
@@ -61,7 +61,7 @@ function createAccount($username,$password){
 
     // check Username
     $Q="select* from Authentication where username='$username'";
-    $dbQuery=mysqli_query($db,$Q) or die (mysqli_error($db));
+    $dbQuery=mysqli_query($db,$Q) or sendLog(die (mysqli_error($db)));
    //checks tho see
     if (mysqli_num_rows($dbQuery) != 0) {
             echo 'Username found: aborting operation';
@@ -72,7 +72,7 @@ function createAccount($username,$password){
     $hash =  password_hash($password,PASSWORD_DEFAULT);
     $insert = "INSERT into Authentication VALUES ('$username','$hash')";
 
-    mysqli_query($db,$insert) or die (mysqli_error($db));
+    mysqli_query($db,$insert) or sendLog(die (mysqli_error($db)));
     
     //Return true and transfer user to login page
     return true;
@@ -86,7 +86,7 @@ function doValidate($username,$sessionToken){
 
 	$db=dbConnect();
 	$Q="select* from Session where username='$username' AND sessionToken='$sessionToken'";
-	$dbQuery=mysqli_query($db,$Q) or die (mysqli_error($db));
+	$dbQuery=mysqli_query($db,$Q) or sendLog(die (mysqli_error($db)));
 
 	if (mysqli_num_rows($dbQuery) != 1) {
 
@@ -94,7 +94,7 @@ function doValidate($username,$sessionToken){
 
 		$Q="delete from Session where username='$username' AND sessionToken='$sessionToken'";
 
-		$dbQuery=mysqli_query($db,$Q) or die (mysqli_error($db));
+		$dbQuery=mysqli_query($db,$Q) or sendLog(die (mysqli_error($db)));
 
            	 return false;
 	};
@@ -113,16 +113,16 @@ function makeFavorite($username, $recipe,$recipeID){
   $recipe=cleanseInput($recipe,$db);
   $recipeID=cleanseInput($recipeID,$db);
   $Q="select * from Favorites where username='$username' AND recipeName='$recipe'";
-  $dbQuery=mysqli_query($db,$Q) or die (mysqli_error($db));
+  $dbQuery=mysqli_query($db,$Q) or sendLog(die (mysqli_error($db)));
 
 	if (mysqli_num_rows($dbQuery) != 1) {
     $insertQ="insert into Favorites VALUES('$username','$recipe','$recipeID')";
-    mysqli_query($db,$insertQ) or die (mysqli_error($db));
+    mysqli_query($db,$insertQ) or sendLog(die (mysqli_error($db)));
     echo "adding $recipe to $username favorites";
     return true;  
   }
   $deleteQ="delete from Favorites where username='$username' and recipeName='$recipe'";
-  mysqli_query($db,$deleteQ) or die (mysqli_error($db));
+  mysqli_query($db,$deleteQ) or sendLog(die (mysqli_error($db)));
   echo "removing $recipe from $username favorites";
   return false;
 }
