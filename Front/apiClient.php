@@ -10,7 +10,9 @@
       $request['type']=$_GET['type'];
       $request['recipeID']=$_GET['recipeID'];
       $response=$client->send_request($request);
-
+      file_put_contents('/home/nic/test.txt',$title);
+      echo $response;
+      exit();
     }
 
     //$request = $_POST['ingredient'];

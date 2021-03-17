@@ -67,11 +67,12 @@
         result=JSON.parse(data);
         console.log(result.Recipe[0].Title);
         for(var i=0; i< result.Recipe.length; i+=1){
-        var str1="http://127.0.0.1/recipe.php?recipe="
+        var str1="http://127.0.0.1/Front/recipe.php?recipeID="
         var str2=result.Recipe[i].recipeID;
         console.log(result.Recipe[i].recipeID);
-        var str3="&type=getName";
-        var aref=str1+str2+str3;
+        var str3="&type=getName&recipe=";
+        var str4=result.Recipe[i].Title;
+        var aref=str1+str2+str3+str4;
         console.log(aref);
         $("<p/>").appendTo("#favor");
         $("<a/>").html(result.Recipe[i].Title).attr('href',aref).appendTo("#favor");

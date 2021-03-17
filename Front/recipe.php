@@ -5,11 +5,24 @@
   require_once('../RabbitMQ/rabbitMQLib.inc');
   session_start();
 
+
   echo"<script src='https://code.jquery.com/jquery-3.6.0.min.js'> </script>";
   $id=$_GET['id'];
   $type=$_GET['type'];
   if($type=='getName'){
-
+    $recipeID=$_GET['recipeID'];
+    echo ("$recipeID");
+    $getdata = http_build_query(
+      array(
+        'type' => $type,
+        'recipeID' => $recipeID
+      )
+   );
+    $request=file_get_contents('http://127.0.0.1/Front/apiClient.php?'.$getdata,false);
+    $json=json_decode($request,true);
+    $recipe=$json['title'];
+    $analyzedResult=$json['analyzedInstructions'][0];
+    $recipeImg=$json['image'];
   }
   else{
   $client = new rabbitMQClient("testRabbitMQ.ini","testServer");
