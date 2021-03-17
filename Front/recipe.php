@@ -54,16 +54,13 @@
         then do for loop for ingredients, or ONLY 1
 
       */
-      $url="https://api.spoonacular.com/food/ingredients/substitutes?=".$ingredientName;
-      /* commented out till last thing, as this cost API points
-      $jsonAlt=get_file_contents($url);
-      $alternative=json_decode($jsonAlt,true);
-      if(alternative!=false){
-        echo "<p> $ingredientName alternative: $alternative </p> </br>";
+      $url="http://127.0.0.1/Front/apiClient.php?type=getAlt&ingredientName=butter";
+      $jsonAlt=file_get_contents($url,false);
+      //$alternative=json_decode($jsonAlt,true);
+        echo "<p> $ingredientName alternative: $jsonAlt </p> </br>";
 
-      }*/
+      }
     }
-  }
 
 /*
 cooking instructions/ steps do the same sort of for loop as above

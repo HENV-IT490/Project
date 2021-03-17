@@ -6,15 +6,19 @@ require_once('../RabbitMQ/rabbitMQLib.inc');
 
 function getRecipe($recipeID)
 {
+  global $apiKey;
   //exec("python3 getRecipe.py " .$recipeID,$recipe);
-  $recipe=file_get_contents("https://api.spoonacular.com/recipes/$recipeID/information?apiKey=e0dfc176edf3449794fdc1aa311bc990&includeNutrition=false",false);
+  $recipe=file_get_contents("https://api.spoonacular.com/recipes/$recipeID/information?$apiKey&includeNutrition=false",false);
   file_put_contents('/home/nic/test.json',$recipe);
   return $recipe;
 }
 function getAlt($ingredient){
-  $alternative=popen("python3 testing.py " .$ingredient,$alternative);
-  echo"returned alternative";
-  return $alternative;
+  global $apiKey;
+  $alternative=file_get_contents("https://api.spoonacular.com/food/ingredients/substitutes?$apiKey&ingredientName=$ingredient");
+  var_dump($alternative);
+  $dencodeAlt=json_decode($alternative,true);
+  
+  return $dencodeAlt['substitutes'][0];
 }
 
 function requestProcessor($request)
@@ -37,7 +41,7 @@ function requestProcessor($request)
 }
 
 $server = new rabbitMQServer("testRabbitMQ.ini","testServer");
-
+$apiKey="apiKey=e0dfc176edf3449794fdc1aa311bc990";
 echo "testRabbitMQServer BEGIN".PHP_EOL;
 $server->process_requests('requestProcessor');
 echo "testRabbitMQServer END".PHP_EOL;

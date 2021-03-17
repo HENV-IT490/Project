@@ -5,14 +5,25 @@
     require_once('../RabbitMQ/rabbitMQLib.inc');
     session_start();
     $client = new rabbitMQClient("testRabbitMQ.ini","testServer");
-    if($_GET['type']=='getName'){
+    if(isset($_GET['type'])){
+      
       $request=Array();
       $request['type']=$_GET['type'];
-      $request['recipeID']=$_GET['recipeID'];
-      $response=$client->send_request($request);
-      file_put_contents('/home/nic/test.txt',$title);
-      echo $response;
-      exit();
+      
+      switch($request['type']){
+      case "getName":
+        $request['recipeID']=$_GET['recipeID'];
+        $response=$client->send_request($request);
+        file_put_contents('/home/nic/test.txt',$title);
+        echo $response;
+        exit();
+      case "getAlt":
+        $request['ingredient']=$_GET['ingredientName'];
+        $response=$client->send_request($request);
+        echo $response;
+        exit();
+
+      }
     }
 
     //$request = $_POST['ingredient'];
