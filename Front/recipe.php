@@ -40,14 +40,14 @@
 
 
 
-
+  echo"<h3>Ingredient list:</h3>";
   for($i=0;$i<count($analyzedResult['steps']);$i+=1)
   {
-    //  
+    
     for($j=0;$j<count($analyzedResult['steps'][$i]['ingredients']);$j+=1)
     {
       $ingredientName=$analyzedResult['steps'][$i]['ingredients'][$j]['name'];
-      echo "<ui>•$ingredientName</ul> </br> ";
+      echo "<li style='line-height:70%'>$ingredientName</li>";
      //  commenting this out as it will take alot of api calls
       $urlIngredient=str_replace(' ', '%20',$ingredientName);
       $getdata = http_build_query(
@@ -58,7 +58,7 @@
      );
      $url="http://127.0.0.1/Front/apiClient.php?" ;
      $jsonAlt=file_get_contents($url.$getdata,false);
-        echo "<p> $ingredientName alternative: $jsonAlt </p></br>";
+        echo "<ul style='line-height:10%'><li> $ingredientName alternative: $jsonAlt </li></ul>";
       }
     }
 
@@ -67,11 +67,13 @@ cooking instructions/ steps do the same sort of for loop as above
 
 THEN custom recipe next to comments table, however we will hide then until onclick
 */
+echo"<h3>Instructions </h3>";
 for($i=0;$i<count($analyzedResult['steps']);$i+=1){
   $k=$i+1;
   echo" <p>$k. {$analyzedResult['steps'][$i]['step']}</p>";
 
 }
+echo"<a href='http://127.0.0.1/Front/customRecipe.php?recipe=$recipe'>Click to view/submit custom recipes</a>";
 echo"<div id='respond'>
 <h3>Leave a Comment</h3> <p>Show comments: <input type='button' id='getComment' value='show'></input></p>
 
