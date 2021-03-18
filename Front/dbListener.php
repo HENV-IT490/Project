@@ -150,6 +150,48 @@ function getFav($username){
   return $recipe;
 }
 
+function doComment($username,$recipe,$comment){
+  
+  $db=dbConnect();
+    if($db == false){
+        return "DB Connection Refused";
+    }
+  $username=cleanseInput($username,$db);
+  $recipe=cleanseInput($recipe,$db);
+  $comment=cleanseInput($comment,$db);
+  echo($comment."\n");
+  echo($recipe);
+  $Q="select* from Comments where username='$username' AND recipe='$recipe'";
+  $checkQ=mysqli_query($db,$Q) or die(mysqli_error($db));
+
+  if(mysqli_num_rows($checkQ)!=0){
+    $response="User:$username already has a comment for Recipe:$recipe";
+    echo $response;
+    return $response;
+  }
+  $commentQ="insert into Comments VALUES ('$username','$recipe','$comment')";
+  mysqli_query($db,$commentQ) or die(mysqli_error($db));
+  echo "inserted $recipe comment for user: $username \n";
+  return true;
+}
+function getComment($recipe){
+  $db=dbConnect();
+    if($db == false){
+        return "DB Connection Refused";
+    }
+  $recipe=cleanseInput($recipe,$db);
+  $selectQ="select * from Comments where recipe='$recipe'";
+  $selectQuery= mysqli_query($db,$selectQ) or die(mysqli_error($db));
+  $i=0;
+  while($get=mysqli_fetch_array($selectQuery)){
+    $data['comments'][$i]['username']=$get['username'];
+    $data['comments'][$i]['comment']=$get['comment'];
+    $i+=1;
+  }
+  var_dump($data);
+  return $data;
+}
+
 function requestProcessor($request)
 {
   echo "received request".PHP_EOL;
@@ -170,6 +212,10 @@ function requestProcessor($request)
       return makeFavorite($request['username'],$request['favoriteName'],$request['favoriteID']);
     case "getFav":
       return getFav($request['username']);
+    case "comment":
+      return doComment($request['username'],$request['recipe'],$request['comment']);
+    case "getComment":
+      return getComment($request['recipe']);
   }
   return array("returnCode" => '0', 'message'=>"Server received request and processed");
 }

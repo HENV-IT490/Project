@@ -13,7 +13,7 @@ $client = new rabbitMQClient("../ini/dbRabbitMQ.ini","dbListener");
 
 $response = $client->send_request($request);
 
-echo "hi im carl";
+echo "$response";
 exit();
 
 echo "$response";

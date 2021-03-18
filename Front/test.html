@@ -3,12 +3,25 @@
    <body>
 	<button type= button id=b1 >load data</button>
 	<div id = d>  </div>
-	<form id="comments">
-		<label for="comment">Comment:</label>
-		<input type="text"name="comment" id="comment" placeholder="Comment here Limit 500 char"> </input>
-		<input type="submit" name="submit" id="submit" value=$recipe> Submit comment </submit> 
-	</form>
 
+
+	<div id='respond'>
+
+		<h3>Leave a Comment</h3> <input type='button' id='showComment'> show comment</input>
+		
+		<form action='postComment id='commentform'>
+			<br>
+		  <textarea name='Comment' id='Comment' rows='10' tabindex='4'cols='30' placeholder='500 characters max' maxlength='500' required='required'></textarea>
+		   </br> 
+		   <input type='hidden' id='recipe' name='recipe' value='$recipe'>$recipe</input>
+		  <input name='submit' id='submit' type='button' value='submit'> </input>
+			 </form>
+		  </div>
+		
+		  <div id=showComment>
+		  </div>
+
+	
       <script src="https://code.jquery.com/jquery-3.6.0.min.js""></script>
   <script>
 	$("#b1").click(function(){
@@ -46,6 +59,23 @@ function check(data){
 
 
       </script>
+
+<script>
+
+	$('#submit').click(function(){
+	  var user=sessionStorage.getItem('username');
+	  var comment=$('#Comment').val();
+	  var recipeChar=$('#recipe').val();
+	  console.log(user);
+	  console.log(recipeChar);
+	  console.log(comment);
+	  $.post('http://127.0.0.1/Front/dbClient.php',{user: user,submit: "comment", recipeChar: recipeChar}, function(){
+	  alert('added comment');
+	
+	  });
+	
+	});
+	</script>
    </body>
 </html>
 

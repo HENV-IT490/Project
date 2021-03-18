@@ -30,8 +30,8 @@ if (isset($_POST['submit']))
 		var sessionStorage=window.sessionStorage;
 		sessionStorage.setItem('username','$username');
 		sessionStorage.setItem('token', '$sessionToken');</script>";
-
-		header('refresh:2;url=http://127.0.0.1/Front/test.html');
+		echo"Success";
+		header('refresh:2;url=http://127.0.0.1/Front/Profile.html');
 		return;
 
 	case "create-account":
@@ -60,6 +60,16 @@ if (isset($_POST['submit']))
 		$response=$client->send_request($request);
 		$new=json_encode($response,true);
 		echo "$new";
+		exit();
+	case "comment":
+		$request['comment']=$_POST['comment'];
+		$request['username']= $_POST['username'];
+		$request['recipe']=$_POST['recipe'];
+		$response=$client->send_request($request);
+		//do some html here
+		echo $response;
+		return $response;
+		
 		exit();
 
 	}
