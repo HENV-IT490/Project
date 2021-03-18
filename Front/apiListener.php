@@ -3,6 +3,7 @@
 require_once('../RabbitMQ/path.inc');
 require_once('../RabbitMQ/get_host_info.inc');
 require_once('../RabbitMQ/rabbitMQLib.inc');
+ini_set('display_errors',1);
 
 function getRecipe($recipeID)
 {
@@ -25,6 +26,13 @@ function getAlt($ingredient){
   return $dencodeAlt['substitutes'][0];
   }
   
+  function getRecipeList($ingredients){
+    global $apiKey;
+    $ingredients=str_replace(' ', ',',$ingredients);
+    $recipeList=file_get_contents("https://api.spoonacular.com/recipes/complexSearch?$apiKey&includeIngredients=$ingredients&instructionsRequired=true&addRecipeInformation=true&number=5");
+    var_dump($recipeList);
+    return $recipeList;
+  }
   
 
 function requestProcessor($request)
@@ -35,15 +43,12 @@ function requestProcessor($request)
       return getRecipe($request['recipeID']);
     case 'getAlt':
       return getAlt($request['ingredient']);
+    case 'getRecipeList':
+      return getRecipeList($request['ingredients']);
   }
   echo "received request".PHP_EOL;
   
   //exec("python3 testing.py " .$request,$recipes);
-  echo"\n\n\n\n\n\n\n\n\n\n";
-  var_dump($recipes);
-
-
-  return $recipes;
 }
 
 $server = new rabbitMQServer("../ini/apiRabbitMQ.ini","apiListener");

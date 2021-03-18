@@ -48,7 +48,7 @@
     {
       $ingredientName=$analyzedResult['steps'][$i]['ingredients'][$j]['name'];
       echo "<ui>•$ingredientName</ul> </br> ";
-     /*  commenting this out as it will take alot of api calls
+     //  commenting this out as it will take alot of api calls
       $urlIngredient=str_replace(' ', '%20',$ingredientName);
       $getdata = http_build_query(
         array(
@@ -58,7 +58,7 @@
      );
      $url="http://127.0.0.1/Front/apiClient.php?" ;
      $jsonAlt=file_get_contents($url.$getdata,false);
-        echo "<p> $ingredientName alternative: $jsonAlt </p> </br>";*/
+        echo "<p> $ingredientName alternative: $jsonAlt </p></br>";
       }
     }
 
