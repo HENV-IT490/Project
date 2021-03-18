@@ -183,6 +183,10 @@ function getComment($recipe){
   $selectQ="select * from Comments where recipe='$recipe'";
   $selectQuery= mysqli_query($db,$selectQ) or die(mysqli_error($db));
   $i=0;
+  if(mysqli_num_rows($selectQuery)==0){
+    echo "There are no custom recipes available";
+    return false;
+  }
   while($get=mysqli_fetch_array($selectQuery)){
     $data['comments'][$i]['username']=$get['username'];
     $data['comments'][$i]['comment']=$get['comment'];
@@ -190,6 +194,46 @@ function getComment($recipe){
   }
   var_dump($data);
   return $data;
+}
+
+function makeCustom($recipe,$customName,$instructions,$ingredients){
+  $db=dbConnect();
+  if($db == false){
+      return "DB Connection Refused";
+  }
+  $recipe=cleanseInput($recipe,$db);
+  $customName=cleanseInput($customName,$db);
+  $instructions=cleanseInput($instructions,$db);
+  $ingredients=cleanseInput($ingredients,$db);
+  $insertQ="insert into CustomRecipes VALUES('$recipe','$customName','$instructions','$ingredients')";
+  mysqli_query($db,$insertQ) or die(mysqli_error($db));
+  echo "$customName is set as a custom recipe for $recipe";
+  return "$customName is set as a custom recipe for $recipe";
+}
+function getCustom($recipe){
+  $db=dbConnect();
+  if($db == false){
+      return "DB Connection Refused";
+  }
+  $recipe=cleanseInput($recipe,$db);
+  echo $recipe;
+  $selectQ="select customName, instructions, ingredients from CustomRecipes where recipe='$recipe'";
+  $selectQuery=mysqli_query($db,$selectQ) or die (mysqli_error($db));
+  if(mysqli_num_rows($selectQuery)==0){
+    $re="No custom recipe for $recipe found";
+    echo $re;
+    return false;
+  }
+  $i=0;
+  while($get=mysqli_fetch_array($selectQuery)){
+    $data['recipes'][$i]['customName']=$get['customName'];
+    $data['recipes'][$i]['instructions']=$get['instructions'];
+    $data['recipes'][$i]['ingredients']=$get['ingredients'];
+    $i+=1;
+  }
+  echo$data['recipes'][0]['customName'];
+  return $data;
+
 }
 
 function requestProcessor($request)
@@ -216,6 +260,10 @@ function requestProcessor($request)
       return doComment($request['username'],$request['recipe'],$request['comment']);
     case "getComment":
       return getComment($request['recipe']);
+    case "makeCustomRecipe":
+      return makeCustom($request['recipe'],$request['customName'],$request['instructions'],$request['ingredients']);
+    case "getCustom":
+      return getCustom($request['recipe']);
   }
   return array("returnCode" => '0', 'message'=>"Server received request and processed");
 }

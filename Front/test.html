@@ -61,21 +61,18 @@ function check(data){
       </script>
 
 <script>
-
 	$('#submit').click(function(){
-	  var user=sessionStorage.getItem('username');
-	  var comment=$('#Comment').val();
-	  var recipeChar=$('#recipe').val();
-	  console.log(user);
-	  console.log(recipeChar);
-	  console.log(comment);
-	  $.post('http://127.0.0.1/Front/dbClient.php',{user: user,submit: "comment", recipeChar: recipeChar}, function(){
-	  alert('added comment');
+	var customName=$('#customName').val();
+	var ingredients=$('#ingredients').val();
+	var instructions=$('#instructions').val();
+	var recipe=$('#recipe').val();
+	var submit=$('#submit').val();
+	$.post('http://127.0.0.1/Front/dbClient.php',{customName: customName,ingredients: ingredients, recipe: $recipe,submit: submit, instructions: instructions},function(data){
 	
-	  });
-	
+		alert(data);
 	});
-	</script>
+	
+	});</script>";
    </body>
 </html>
 

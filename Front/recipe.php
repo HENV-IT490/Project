@@ -19,6 +19,7 @@
       )
    );
     $request=file_get_contents('http://127.0.0.1/Front/apiClient.php?'.$getdata,false);
+    file_put_contents('/home/nic/test.txt',$request);
     $json=json_decode($request,true);
     $recipe=$json['title'];
     $analyzedResult=$json['analyzedInstructions'][0];
@@ -49,7 +50,7 @@
       $ingredientName=$analyzedResult['steps'][$i]['ingredients'][$j]['name'];
       echo "<li style='line-height:70%'>$ingredientName</li>";
      //  commenting this out as it will take alot of api calls
-      $urlIngredient=str_replace(' ', '%20',$ingredientName);
+      /*$urlIngredient=str_replace(' ', '%20',$ingredientName);
       $getdata = http_build_query(
         array(
           'type' => 'getAlt',
@@ -58,7 +59,7 @@
      );
      $url="http://127.0.0.1/Front/apiClient.php?" ;
      $jsonAlt=file_get_contents($url.$getdata,false);
-        echo "<ul style='line-height:10%'><li> $ingredientName alternative: $jsonAlt </li></ul>";
+        echo "<ul style='line-height:10%'><li> $ingredientName alternative: $jsonAlt </li></ul>";*/
       }
     }
 

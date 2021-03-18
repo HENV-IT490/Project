@@ -71,6 +71,14 @@ if (isset($_POST['submit']))
 		return $response;
 		
 		exit();
+	case "makeCustomRecipe":
+		$request['ingredients']=$_POST['ingredients'];
+		$request['instructions']=$_POST['instructions'];
+		$request['customName']=$_POST['customName'];
+		$request['recipe']=$_POST['recipe'];
+		$response=$client->send_request($request);
+		echo $response;
+		return $response;
 
 	}
 }
