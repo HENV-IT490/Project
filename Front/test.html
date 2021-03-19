@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+   <body>
+	<button type= button id=b1 >load data</button>
+	<div id = d>  </div>
+
+
+	<div id='respond'>
+
+		<h3>Leave a Comment</h3> <input type='button' id='showComment'> show comment</input>
+		
+		<form action='postComment id='commentform'>
+			<br>
+		  <textarea name='Comment' id='Comment' rows='10' tabindex='4'cols='30' placeholder='500 characters max' maxlength='500' required='required'></textarea>
+		   </br> 
+		   <input type='hidden' id='recipe' name='recipe' value='$recipe'>$recipe</input>
+		  <input name='submit' id='submit' type='button' value='submit'> </input>
+			 </form>
+		  </div>
+		
+		  <div id=showComment>
+		  </div>
+
+	
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js""></script>
+  <script>
+	$("#b1").click(function(){
+		var sessionStorage= window.sessionStorage;
+		var sessionUID = sessionStorage.getItem('username');
+		var sessionTOKEN = sessionStorage.getItem('token');
+		console.log(sessionTOKEN);
+		console.log(sessionUID);
+		check(sessionTOKEN);
+		//if either is empty, attempt to get sessionStorage from
+		//other (page that might be open), Otherwise, just clear() +
+		//redirect
+		$.post('http://127.0.0.1/Front/sessionValidate.php',{username: sessionUID, token: sessionTOKEN}, function(data){
+			console.log(data);
+			check(data);
+		} );
+			
+	});
+
+
+
+
+function check(data){
+
+	if (data == false || data == null || data.length==0){
+
+		//sessionStorage.clear();
+		//window.location.href="http://127.0.0.1/Front/index.html";
+		console.log(data);
+	}
+
+
+
+}
+
+
+      </script>
+
+<script>
+	$('#submit').click(function(){
+	var customName=$('#customName').val();
+	var ingredients=$('#ingredients').val();
+	var instructions=$('#instructions').val();
+	var recipe=$('#recipe').val();
+	var submit=$('#submit').val();
+	$.post('http://127.0.0.1/Front/dbClient.php',{customName: customName,ingredients: ingredients, recipe: $recipe,submit: submit, instructions: instructions},function(data){
+	
+		alert(data);
+	});
+	
+	});</script>";
+   </body>
+</html>
+
+
