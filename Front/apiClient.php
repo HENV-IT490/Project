@@ -27,7 +27,6 @@
         $request['ingredients']= $_GET['ingredients'];
         $response= $client->send_request($request);
         $json_a=json_decode($response, true);
-        file_put_contents('/home/nic/test.txt',$json_a['results'][0]['title']);
       
         $_SESSION['recipeCurrent'] = $json_a;
         $count=count($json_a['results']);
