@@ -219,6 +219,18 @@ function makeCustom($recipe,$customName,$instructions,$ingredients){
     return $sucess;
   } else {
     $error= mysqli_error($db);
+    sendLog(__FILE__.":".__LINE__.":".$error.PHP_EOL);
+    return "Could not add recipe: Duplicate instructions for $customName.";
+  }
+}
+function getCustom($recipe){
+  $db=dbConnect();
+  if($db == false){
+      return "DB Connection Refused";
+  }
+  $recipe=cleanseInput($recipe,$db);
+  echo $recipe;
+  $selectQ="select customName, instructions, ingredients from CustomRecipes where recipe='$recipe'";
   $selectQuery=mysqli_query($db,$selectQ) or die (mysqli_error($db));
   if(mysqli_num_rows($selectQuery)==0){
     $re="No custom recipe for $recipe found";
@@ -268,6 +280,7 @@ function requestProcessor($request)
   }
   return array("returnCode" => '0', 'message'=>"Server received request and processed");
 }
+
 function cleanseInput($input,$db){
 	
 	$input=mysqli_real_escape_string($db,$input);
