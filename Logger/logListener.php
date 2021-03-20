@@ -17,6 +17,7 @@ function requestProcessor($request)
   echo "received request".PHP_EOL;
   var_dump($request);
   file_put_contents('/var/log/henv.log',$request,FILE_APPEND);
+  return "sucess";
 }
 
 $server = new rabbitMQServer("loggerRabbitMQ.ini","logListener");
