@@ -16,7 +16,6 @@ for($i=0;$i<count($response['comments']);$i+=1){
 <textarea rows='3' readonly='true' style='font-size: 12pt' tabindex='4'cols='30' >{$response['comments'][$i]['comment']}</textarea> </br>";
 }
 echo $wholeHTML;
-file_put_contents('/home/nic/test.txt',$wholeHTML);
 exit();
 
 

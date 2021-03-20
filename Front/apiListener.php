@@ -10,7 +10,6 @@ function getRecipe($recipeID)
   global $apiKey;
   //exec("python3 getRecipe.py " .$recipeID,$recipe);
   $recipe=file_get_contents("https://api.spoonacular.com/recipes/$recipeID/information?$apiKey&includeNutrition=false",false);
-  file_put_contents('/home/nic/test.json',$recipe);
   var_dump($recipe);
   return $recipe;
 }

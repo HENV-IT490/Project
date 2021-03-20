@@ -53,7 +53,7 @@ $wholeHTML=$wholeHTML."<label>Custom Recipe:$customName for $recipe </label></br
 
 Instructions:$instructions</textarea></br>";
 }
-} else{echo "your gay";}
+} else{echo "No comments yet! How bout you make one wink wink.";}
 
 if(strlen($wholeHTML)!= 0){
     echo "</br>".$wholeHTML;
