@@ -56,7 +56,7 @@
 </main>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="http://127.0.0.1/Front/sessionValidate.js"></script>
+    <script src="http://25.9.149.99/Front/sessionValidate.js"></script>
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
       
@@ -69,7 +69,7 @@
         result=JSON.parse(data);
         console.log(result.Recipe[0].Title);
         for(var i=0; i< result.Recipe.length; i+=1){
-        var str1="http://127.0.0.1/Front/recipe.php?recipeID="
+        var str1="http://25.9.149.99/Front/recipe.php?recipeID="
         var str2=result.Recipe[i].recipeID;
         console.log(result.Recipe[i].recipeID);
         var str3="&type=getName&recipe=";
