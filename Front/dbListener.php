@@ -171,9 +171,15 @@ function doComment($username,$recipe,$comment){
     return $response;
   }
   $commentQ="insert into Comments VALUES ('$username','$recipe','$comment')";
-  mysqli_query($db,$commentQ) or sendLog(die(mysqli_error($db)));
-  echo "inserted $recipe comment for user: $username \n";
-  return true;
+  if (mysqli_query($db,$commentQ)){
+    echo "inserted $recipe comment for user: $username \n";
+    return true;
+  } else {
+    sendLog(__FILE__.__LINE__.mysqli_error($db));
+    $error="Duplicate comment: Could not submit.";
+    echo ($error);
+    return "$error";
+  }
 }
 function getComment($recipe){
   $db=dbConnect();
@@ -207,9 +213,15 @@ function makeCustom($recipe,$customName,$instructions,$ingredients){
   $instructions=cleanseInput($instructions,$db);
   $ingredients=cleanseInput($ingredients,$db);
   $insertQ="insert into CustomRecipes VALUES('$recipe','$customName','$instructions','$ingredients')";
-  mysqli_query($db,$insertQ) or die(mysqli_error($db));
-  echo "$customName is set as a custom recipe for $recipe";
-  return "$customName is set as a custom recipe for $recipe";
+  if(mysqli_query($db,$insertQ)){
+    $sucess="$customName is set as a custom recipe for $recipe";
+    echo $sucess;
+    return $sucess;
+  } else {
+    $error= mysqli_error($db);
+    sendLog(PHP_EOL.__FILE__.":".__LINE__.":".$error);
+    return "Could not add recipe: Duplicate instructions for $customName.";
+  }
 }
 function getCustom($recipe){
   $db=dbConnect();

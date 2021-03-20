@@ -8,7 +8,7 @@
 		//if either is empty, attempt to get sessionStorage from
 		//other (page that might be open), Otherwise, just clear() +
 		//redirect
-		$.post('http://25.9.149.99/Front/sessionValidate.php',{username: sessionUID, token: sessionTOKEN}, function(data){
+		$.post('http://127.0.0.1/Front/sessionValidate.php',{username: sessionUID, token: sessionTOKEN}, function(data){
 			console.log(data);
 			check(data);
 		} );
@@ -23,7 +23,7 @@ function check(data){
 	if (data == null|| data.length == 0){
 
 		sessionStorage.clear();
-		window.location.href="http://25.9.149.99/Front/index.html";
+		window.location.href="http://127.0.0.1/Front/index.html";
 		console.log(data);
 	}
 
