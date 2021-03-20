@@ -5,7 +5,7 @@ require_once('../RabbitMQ/get_host_info.inc');
 require_once('../RabbitMQ/rabbitMQLib.inc');
 ini_set('display_errors',1);
 $recipe=$_GET['recipe'];
-echo"<h3>Submit your own recipe for $recipe;?!</h3>
+echo"<h3>Submit your own recipe for $recipe!</h3>
 <input type='hidden' id='recipe' value='$recipe'> </input>
 <input type='textbox' id='customName' name='customName' placeholder='Custom Recipe Name *Required*'></input></br>
 <h3>Ingredients List</h3></br>

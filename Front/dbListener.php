@@ -3,6 +3,7 @@
 require_once('../RabbitMQ/path.inc');
 require_once('../RabbitMQ/get_host_info.inc');
 require_once('../RabbitMQ/rabbitMQLib.inc');
+require('../Logger/logAgent.php');
 
 
 
@@ -164,13 +165,13 @@ function doComment($username,$recipe,$comment){
   $Q="select* from Comments where username='$username' AND recipe='$recipe'";
   $checkQ=mysqli_query($db,$Q) or die(mysqli_error($db));
 
-  if(mysqli_num_rows($checkQ)!=0){
+  if(mysqli_num_rows($checkQ)>5){
     $response="User:$username already has a comment for Recipe:$recipe";
     echo $response;
     return $response;
   }
   $commentQ="insert into Comments VALUES ('$username','$recipe','$comment')";
-  mysqli_query($db,$commentQ) or die(mysqli_error($db));
+  mysqli_query($db,$commentQ) or sendLog(die(mysqli_error($db)));
   echo "inserted $recipe comment for user: $username \n";
   return true;
 }
