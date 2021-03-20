@@ -65,7 +65,7 @@
   <script>
     $(document).ready(function(){
       var username=sessionStorage.getItem('username');
-      $.post('http://127.0.0.1/Front/dbClient.php',{submit: "getFav", username: username}, function (data) {
+      $.post('dbClient.php',{submit: "getFav", username: username}, function (data) {
         console.log(data);
         result=JSON.parse(data);
         console.log(result.Recipe[0].Title);
