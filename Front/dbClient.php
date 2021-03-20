@@ -23,7 +23,7 @@ if (isset($_POST['submit']))
 
 		if ($response==false){
 			echo ("false");
-			header("Location:http://127.0.0.1/Front/index.html");
+			header("url=index.html");
 		}
 
 		echo "<script>
@@ -31,7 +31,7 @@ if (isset($_POST['submit']))
 		sessionStorage.setItem('username','$username');
 		sessionStorage.setItem('token', '$sessionToken');</script>";
 		echo"Success";
-		header('refresh:2;url=http://127.0.0.1/Front/Profile.html');
+		header('refresh:2;url=Profile.html');
 		return;
 
 	case "create-account":
