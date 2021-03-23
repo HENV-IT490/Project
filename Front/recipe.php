@@ -18,7 +18,7 @@
         'recipeID' => $recipeID
       )
    );
-    $request=file_get_contents('http://127.0.0.1/Front/apiClient.php?'.$getdata,false);
+    $request=file_get_contents('http://25.9.149.99/Front/apiClient.php?'.$getdata,false);
     $json=json_decode($request,true);
     $recipe=$json['title'];
     $analyzedResult=$json['analyzedInstructions'][0];
@@ -56,7 +56,7 @@
           'ingredientName' => $urlIngredient
         )
      );
-     $url="http://127.0.0.1/Front/apiClient.php?" ;
+     $url="http://25.9.149.99/Front/apiClient.php?" ;
      $jsonAlt=file_get_contents($url.$getdata,false);
         echo "<ul style='line-height:10%'><li> $ingredientName alternative: $jsonAlt </li></ul>";
       }
@@ -73,7 +73,7 @@ for($i=0;$i<count($analyzedResult['steps']);$i+=1){
   echo" <p>$k. {$analyzedResult['steps'][$i]['step']}</p>";
 
 }
-echo"<a href='http://127.0.0.1/Front/customRecipe.php?recipe=$recipe'>Click to view/submit custom recipes</a>";
+echo"<a href='http://25.9.149.99/Front/customRecipe.php?recipe=$recipe'>Click to view/submit custom recipes</a>";
 echo"<div id='respond'>
 <h3>Leave a Comment</h3> <p>Show comments: <input type='button' id='getComment' value='show'></input></p>
 
@@ -98,7 +98,7 @@ $('#favorite').click(function(){
 var username=sessionStorage.getItem('username');
 var favName=$('#favorite').val();
 var favID=document.getElementById('favoriteID').textContent;
-$.post('http://127.0.0.1/Front/dbClient.php', { username: username, favoriteID: favID, favoriteName: favName, submit: 'favorites'},function(data){
+$.post('http://25.9.149.99/Front/dbClient.php', { username: username, favoriteID: favID, favoriteName: favName, submit: 'favorites'},function(data){
 
   if(data!=false){ alert('added dish to favorites');}
   else{ 
@@ -118,7 +118,7 @@ $('#submit').click(function(){
   console.log(username);
   console.log(recipe);
   console.log(comment);
-  $.post('http://127.0.0.1/Front/dbClient.php', {username: username, comment: comment, submit: 'comment', recipe: recipe}, function(data){
+  $.post('http://25.9.149.99/Front/dbClient.php', {username: username, comment: comment, submit: 'comment', recipe: recipe}, function(data){
   if(data != true){
     alert(data);
   }
@@ -133,7 +133,7 @@ $('#submit').click(function(){
 echo"<script>
   var recipe= $('#recipe').val();
   $('#getComment').click(function(){
-    $('#showComment').load('http://127.0.0.1/Front/loadComment.php',{recipe: recipe},function(){
+    $('#showComment').load('http://25.9.149.99/Front/loadComment.php',{recipe: recipe},function(){
       alert('loaded comments');
     });
 
