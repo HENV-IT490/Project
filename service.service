@@ -1,0 +1,4 @@
+[Service]
+ExecStart=/home/vp347/project/Project/Front/dbLister.php
+[Install]
+WantedBy=multi-user.target
