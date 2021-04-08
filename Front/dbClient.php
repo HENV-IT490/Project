@@ -23,7 +23,7 @@ if (isset($_POST['submit']))
 
 		if ($response==false){
 			echo ("false");
-			header("url=index.html");
+			header("Location: http://25.9.149.99/Front/index.html");
 		}
 
 		echo "<script>

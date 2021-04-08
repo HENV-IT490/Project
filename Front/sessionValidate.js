@@ -20,7 +20,7 @@
 
 function check(data){
 
-	if (data == null|| data.length == 0){
+	if (data == false|| data.length == 0){
 
 		sessionStorage.clear();
 		window.location.href="http://25.9.149.99/Front/index.html";

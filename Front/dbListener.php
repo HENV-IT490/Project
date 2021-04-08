@@ -1,9 +1,11 @@
 #!/usr/bin/php
 <?php
-require_once('../RabbitMQ/path.inc');
-require_once('../RabbitMQ/get_host_info.inc');
-require_once('../RabbitMQ/rabbitMQLib.inc');
-require('../Logger/logAgent.php');
+$footer='/home/nic/midterm/Project/RabbitMQ/rabbitMQLib.inc';
+require_once(__DIR__.'/../RabbitMQ/rabbitMQLib.inc');
+require_once(__DIR__.'/../RabbitMQ/path.inc');
+require_once(__DIR__.'/../RabbitMQ/get_host_info.inc');
+
+require(__DIR__.'/../Logger/logAgent.php');
 
 
 
@@ -97,7 +99,7 @@ function doValidate($username,$sessionToken){
 
 		$dbQuery=mysqli_query($db,$Q) or sendLog(die (mysqli_error($db)));
 
-           	 return false;
+     return false;
 	};
 	//else valid
 	return true;
@@ -304,7 +306,7 @@ function dbConnect(){
 
 
 
-$server = new rabbitMQServer("../ini/dbRabbitMQ.ini","dbListener");
+$server = new rabbitMQServer(__DIR__."/../ini/dbRabbitMQ.ini","dbListener");
 
 echo "testRabbitMQServer BEGIN".PHP_EOL;
 $server->process_requests('requestProcessor');

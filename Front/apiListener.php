@@ -1,8 +1,8 @@
 #!/usr/bin/php
 <?php
-require_once('../RabbitMQ/path.inc');
-require_once('../RabbitMQ/get_host_info.inc');
-require_once('../RabbitMQ/rabbitMQLib.inc');
+require_once(__DIR__.'/../RabbitMQ/path.inc');
+require_once(__DIR__.'/../RabbitMQ/get_host_info.inc');
+require_once(__DIR__.'/../RabbitMQ/rabbitMQLib.inc');
 ini_set('display_errors',1);
 
 function getRecipe($recipeID)
@@ -51,7 +51,7 @@ function requestProcessor($request)
   //exec("python3 testing.py " .$request,$recipes);
 }
 
-$server = new rabbitMQServer("../ini/apiRabbitMQ.ini","apiListener");
+$server = new rabbitMQServer(__DIR__."/../ini/apiRabbitMQ.ini","apiListener");
 $apiKey="apiKey=e0dfc176edf3449794fdc1aa311bc990";
 echo "testRabbitMQServer BEGIN".PHP_EOL;
 $server->process_requests('requestProcessor');
