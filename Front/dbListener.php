@@ -172,7 +172,7 @@ function doComment($username,$recipe,$comment){
     echo $response;
     return $response;
   }
-  $commentQ="insert into Comments VALUES ('$username','$recipe','$comment')";
+  $commentQ="insert into Comments VALUES ('$username','$comment','$recipe')";
   if (mysqli_query($db,$commentQ)){
     echo "inserted $recipe comment for user: $username \n";
     return true;
