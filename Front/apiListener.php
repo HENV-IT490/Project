@@ -52,6 +52,8 @@ function requestProcessor($request)
       return getAlt($request['ingredient']);
     case 'getRecipeList':
       return getRecipeList($request['ingredients']);
+    case 'getSimilarRecipe':
+      return getSimilar($request['recipeID']);
   }
   echo "received request".PHP_EOL;
   
