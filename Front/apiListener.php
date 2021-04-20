@@ -24,15 +24,22 @@ function getAlt($ingredient){
   }
   echo $dencodeAlt['substitutes'][0];
   return $dencodeAlt['substitutes'][0];
-  }
+}
+function getSimilar($recipeID)
+{
+  global $apiKey;
+  $similar=file_get_contents("https://api.spoonacular.com/recipes/$recipeID/similar?$apiKey");
+  var_dump($similar);
+  return $similar;
+}
   
-  function getRecipeList($ingredients){
-    global $apiKey;
-    $ingredients=str_replace(' ', ',',$ingredients);
-    $recipeList=file_get_contents("https://api.spoonacular.com/recipes/complexSearch?$apiKey&includeIngredients=$ingredients&instructionsRequired=true&addRecipeInformation=true&number=5");
-    var_dump($recipeList);
-    return $recipeList;
-  }
+function getRecipeList($ingredients){
+  global $apiKey;
+  $ingredients=str_replace(' ', ',',$ingredients);
+  $recipeList=file_get_contents("https://api.spoonacular.com/recipes/complexSearch?$apiKey&includeIngredients=$ingredients&instructionsRequired=true&addRecipeInformation=true&number=5");
+  var_dump($recipeList);
+  return $recipeList;
+}
   
 
 function requestProcessor($request)
