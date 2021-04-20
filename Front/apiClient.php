@@ -27,6 +27,11 @@
         $request['ingredients']= $_GET['ingredients'];
         $response= $client->send_request($request);
         $json_a=json_decode($response, true);
+      case "getSimilarRecipe":
+        $request['recipeID']=$_GET['recipeID'];
+        $response=$client->send_request($request);
+        echo $response;
+        exit();
       
         $_SESSION['recipeCurrent'] = $json_a;
         $count=count($json_a['results']);
