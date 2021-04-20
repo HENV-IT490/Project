@@ -64,15 +64,20 @@
 
 /*
 cooking instructions/ steps do the same sort of for loop as above
-
-THEN custom recipe next to comments table, however we will hide then until onclick
 */
 echo"<h3>Instructions </h3>";
 for($i=0;$i<count($analyzedResult['steps']);$i+=1){
   $k=$i+1;
   echo" <p>$k. {$analyzedResult['steps'][$i]['step']}</p>";
-
 }
+
+/*
+get similar recipe to display here, same steps as instructions, but with similar recipe.
+*/
+
+/*
+THEN custom recipe next to comments table, however we will hide then until onclick
+*/
 echo"<a href='http://25.9.149.99/Front/customRecipe.php?recipe=$recipe'>Click to view/submit custom recipes</a>";
 echo"<div id='respond'>
 <h3>Leave a Comment</h3> <p>Show comments: <input type='button' id='getComment' value='show'></input></p>
