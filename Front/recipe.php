@@ -73,6 +73,7 @@ for($i=0;$i<count($analyzedResult['steps']);$i+=1){
 
 /*
 get similar recipe to display here, same steps as instructions, but with similar recipe.
+
 */
 
 /*
