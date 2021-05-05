@@ -77,6 +77,10 @@ function requestProcessor($request)
   {
     return "ERROR: unsupported message type";
   }
+  if ($request['status'] == 'hsb'){
+    echo "Request to HSB logged.";
+    return;
+  }
   switch ($request['type'])
   {
     case "login":
@@ -107,6 +111,17 @@ function dbConnect(){
 	return $db;
 
 
+}
+$status=getenv('STATUS');
+if ($status== 'slave'){
+  $execresult=1;
+  $primaryIP=getenv('OPPIP');
+  while ($execresult != 0){
+    exec('ping 25.2.97.87 -w5 -c2',$output, $execresult);
+    sleep(3);
+  }
+  $status == 'master';
+  echo "status == master";
 }
 $server = new rabbitMQServer("frontRabbitMQ.ini","testServer");
 
