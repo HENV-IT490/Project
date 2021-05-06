@@ -1,0 +1,8 @@
+[Unit]
+After=databasehsb.target
+Wants==databasehsb.target
+[Service]
+ExecStart=/home/nickdb/Project/Front/dbListener.php
+ExecStartPre=/bin/sleep 30
+[Install]
+WantedBy=multi-user.target          

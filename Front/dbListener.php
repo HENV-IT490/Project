@@ -304,7 +304,17 @@ function dbConnect(){
 }
 
 
-
+$status=getenv('STATUS');
+if ($status != 'master'){
+  $execresult=0;
+  $primaryIP=getenv('OPPIP');
+  while ($execresult == 0 ){
+    exec('ping 25.2.97.87 -w5 -c2',$output, $execresult);
+    echo $execresult;
+  }
+  $status == 'master';
+  echo "status == master";
+}
 
 $server = new rabbitMQServer(__DIR__."/../ini/dbRabbitMQ.ini","dbListener");
 

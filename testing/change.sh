@@ -32,4 +32,5 @@ done
 echo "Host is now Master, using commands."
 #insert mysql commands to switch slave to master/master commands
 mysql -u$user test -Bse "stop slave; reset slave;"
+exec bash
 
