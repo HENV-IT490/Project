@@ -1,11 +1,14 @@
 #!/bin/bash
-ping 25.2.97.87 -w1 -c2 &>/dev/null
+echo $OPPIP
+ping $OPPIP -w1 -c2 &>/dev/null
 
 if [ $? -eq 0 ]
 then
-    sed -i 's/master/slave/g' /home/nickdb/.bashrc
+    sed -i "s/status=.*/status='slave'/g" ~/.bashrc
     export STATUS="slave"
+    echo "This is a slave now"
 else
-    sed -i 's/slave/master/g' /home/nickdb/.bashrc
+    sed -i "s/slavstatus=.*/status='master'/g" ~/.bashrc
     export STATUS="master"
+    echo "This is a master now"
 fi

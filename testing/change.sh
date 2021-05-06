@@ -13,7 +13,7 @@ fi
 
 #Host is slave, but can be promoted if master can't be pinged 5 times within 30 seconds
 while [ "$status" != "master" ]
-    do ping -c1 -w1 25.2.97.87 &>/dev/null
+    do ping -c1 -w1 $OPPIP &>/dev/null
         if [ $? -ne 0 ]
         then
             fail_count=$((fail_count + 1))
