@@ -2,11 +2,11 @@
 #Host starts out as slave or I can change this to env variable
 user=dbroot
 fail_count=0
-./status.sh
 status=$STATUS
 
 if [ "$status" == "slave" ]
 then  
+    echo "Using Slave commands"
     #do necessary slave commands for master slave
     mysql -u$user test -Bse "reset master;reset slave;start slave;"
 fi 
@@ -29,6 +29,7 @@ while [ "$status" != "master" ]
         fi
         sleep 3
 done
+sed -i "s/STATUS=.*/STATUS='master'/g" $HOME/.bashrc
 echo "Host is now Master, using commands."
 #insert mysql commands to switch slave to master/master commands
 mysql -u$user test -Bse "stop slave; reset slave;"
