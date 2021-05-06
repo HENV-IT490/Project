@@ -1,7 +1,6 @@
 #!/bin/bash
 echo $OPPIP
-ping $OPPIP -w1 -c2 &>/dev/null
-
+ping 25.2.97.87 -c5 -w500
 if [ $? -eq 0 ]
 then
     sed -i "s/status=.*/status='slave'/g" ~/.bashrc
