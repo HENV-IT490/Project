@@ -2,7 +2,7 @@
 #Host starts out as slave or I can change this to env variable
 user=dbroot
 fail_count=0
-. ~/status.sh
+./status.sh
 status=$STATUS
 
 if [ "$status" == "slave" ]
