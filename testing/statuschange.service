@@ -1,0 +1,8 @@
+[Unit]
+After=network-online.target logmein-hamachi.service
+Wants=network-online.target logmein-hamachi.service
+[Service]
+ExecStartPre=/bin/sleep 10
+ExecStart=/home/nickdb/Project/testing/status.sh
+[Install]
+WantedBy=multi-user.target                          
