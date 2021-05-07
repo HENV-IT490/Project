@@ -1,4 +1,5 @@
 #!/bin/bash
+source /home/nickdb/.bashrc
 echo $OPPIP
 ping 25.2.97.87 -c5
 if [ $? -eq 0 ]
