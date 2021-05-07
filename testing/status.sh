@@ -1,6 +1,5 @@
 #!/bin/bash
-source /home/nickdb/.bashrc
-echo $OPPIP
+
 ping 25.2.97.87 -c5
 if [ $? -eq 0 ]
 then
@@ -12,4 +11,4 @@ else
     export STATUS="master"
     echo "This is a master now"
 fi
-exec bash
+
