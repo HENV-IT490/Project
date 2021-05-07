@@ -255,6 +255,10 @@ function requestProcessor($request)
 {
   echo "received request".PHP_EOL;
   var_dump($request);
+  
+  if(statusCheck() == 'slave'){
+    return;
+  }
   if(!isset($request['type']))
   {
     return "ERROR: unsupported message type";
@@ -291,6 +295,27 @@ function cleanseInput($input,$db){
 
 }
 
+function statusCheck(){
+  $homedir=getenv('HOME');
+  $handle=fopen($homedir . '/myenv.conf','r');
+  $status = 'undecided';
+  While (($buffer = fgets($handle)) !== false){
+      if (strpos($buffer,'STATUS=slave')!== false ) {
+          $status = 'slave';
+          echo "status == slave";
+          return($status);
+      }
+      else if (strpos($buffer,'STATUS=master')!== false ){
+          $status= 'master';
+          echo "status == master";
+          return($status);
+
+      }
+  }
+
+
+
+}
 function dbConnect(){
 
 	$db=mysqli_connect("127.0.0.1",'Admin','letsgetanA','projectdb');
@@ -304,7 +329,9 @@ function dbConnect(){
 }
 
 
-$status=getenv('STATUS');
+
+/*$status=getenv('STATUS');
+echo $status;
 if ($status != 'master'){
   $execresult=0;
   $primaryIP=getenv('OPPIP');
@@ -315,7 +342,13 @@ if ($status != 'master'){
   $status == 'master';
   echo "status == master";
 }
+*/
+while( true){
+  if(statusCheck() == 'slave'){
+    exit;
+  }
 
+}
 $server = new rabbitMQServer(__DIR__."/../ini/dbRabbitMQ.ini","dbListener");
 
 echo "testRabbitMQServer BEGIN".PHP_EOL;
