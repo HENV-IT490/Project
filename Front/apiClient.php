@@ -23,6 +23,11 @@
         $response=$client->send_request($request);
         echo $response;
         exit();
+      case "getSimilar":
+        $request['recipeID'] = $_GET['recipeID'];
+        $response=$client->send_request($request);
+        echo $response;
+        exit();
       case "getRecipeList":
         $request['ingredients']= $_GET['ingredients'];
         $response= $client->send_request($request);

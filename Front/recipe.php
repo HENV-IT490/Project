@@ -73,6 +73,24 @@ for($i=0;$i<count($analyzedResult['steps']);$i+=1){
   echo" <p>$k. {$analyzedResult['steps'][$i]['step']}</p>";
 
 }
+
+// Similar Recipe information:
+$jsonSimilar = file_get_contents("http://25.9.149.99/Front/apiClient.php?type=getSimilar&recipeID=$recipeID", false);
+$similarArray = json_decode($jsonSimilar, true);
+for($i = 0; $i < 3; $i+=1)
+{
+  echo "<br>";
+  $id = $similarArray[$i]["id"];
+  $type = $similarArray[$i]["imageType"];
+  // echo "<p>ID: $id</p>";
+  // echo "<p>Stuff: {$json_array[4]}</p>";
+  $image_url = "https://spoonacular.com/recipeImages/$id-240x150.$type";
+  echo "<img src=$image_url alt='this is a test'><img>";
+  echo "<br>";
+  echo "<a href='http://25.9.149.99/Front/recipe.php?type=getName&recipeID=$id'>{$json_array[$i]['title']}</a>";
+}
+
+
 echo"<a href='http://25.9.149.99/Front/customRecipe.php?recipe=$recipe'>Click to view/submit custom recipes</a>";
 echo"<div id='respond'>
 <h3>Leave a Comment</h3> <p>Show comments: <input type='button' id='getComment' value='show'></input></p>

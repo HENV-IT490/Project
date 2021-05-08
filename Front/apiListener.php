@@ -24,15 +24,22 @@ function getAlt($ingredient){
   }
   echo $dencodeAlt['substitutes'][0];
   return $dencodeAlt['substitutes'][0];
-  }
+}
   
-  function getRecipeList($ingredients){
-    global $apiKey;
-    $ingredients=str_replace(' ', ',',$ingredients);
-    $recipeList=file_get_contents("https://api.spoonacular.com/recipes/complexSearch?$apiKey&includeIngredients=$ingredients&instructionsRequired=true&addRecipeInformation=true&number=5");
-    var_dump($recipeList);
-    return $recipeList;
-  }
+function getRecipeList($ingredients){
+  global $apiKey;
+  $ingredients=str_replace(' ', ',',$ingredients);
+  $recipeList=file_get_contents("https://api.spoonacular.com/recipes/complexSearch?$apiKey&includeIngredients=$ingredients&instructionsRequired=true&addRecipeInformation=true&number=5");
+  var_dump($recipeList);
+  return $recipeList;
+}
+
+function getSimilarRecipe($recipeID){
+  global $apiKey;
+  $recipeList = file_get_contents("https://api.spoonacular.com/recipes/$recipeID/similar?$apiKey", false);
+  var_dump($recipeList);
+  return $recipeList;
+}
   
 
 function requestProcessor($request)
@@ -45,6 +52,8 @@ function requestProcessor($request)
       return getAlt($request['ingredient']);
     case 'getRecipeList':
       return getRecipeList($request['ingredients']);
+    case 'getSimilar':
+      return getSimilarRecipe($request['recipeID']);
   }
   echo "received request".PHP_EOL;
   
