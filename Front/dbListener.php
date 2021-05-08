@@ -303,12 +303,12 @@ function statusCheck(){
       if (strpos($buffer,'STATUS=slave')!== false ) {
           $status = 'slave';
           echo "status == slave";
-          return($status);
+          //return($status);
       }
       else if (strpos($buffer,'STATUS=master')!== false ){
           $status= 'master';
           echo "status == master";
-          return($status);
+          //return($status);
 
       }
   }
@@ -343,12 +343,19 @@ if ($status != 'master'){
   echo "status == master";
 }
 */
-while( true){
-  if(statusCheck() == 'slave'){
-    exit;
-  }
 
-}
+while (true){
+  $getEnv=file_get_contents('/home/nickdb/myenv.conf');
+  echo $getEnv;
+  if($getEnv == "STATUS='master'"){
+      echo"This is master";
+  
+  }
+  else if ($getEnv == "STATUS='slave'"){
+      echo" This is slave";
+  }
+  sleep(5);
+  }
 $server = new rabbitMQServer(__DIR__."/../ini/dbRabbitMQ.ini","dbListener");
 
 echo "testRabbitMQServer BEGIN".PHP_EOL;

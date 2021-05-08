@@ -4,5 +4,6 @@ Wants=network-online.target logmein-hamachi.service
 [Service]
 ExecStartPre=/bin/sleep 10
 ExecStart=/home/nickdb/Project/testing/status.sh
+Environment="HOME=/home/nickdb" "OPPIP=25.2.97.87"
 [Install]
-WantedBy=multi-user.target                          
+WantedBy=multi-user.target dbListener.service                          
