@@ -1,7 +1,7 @@
 #!/bin/bash
 echo $OPPIP
 echo $HOME
-ping $OPPIP -c5
+ping $OPPIP -c20
 if [ $? -eq 0 ]
 then
     sed -i "s/STATUS=.*/STATUS='slave'/g" $HOME/myenv.conf
