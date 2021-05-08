@@ -1,15 +1,15 @@
 #!/bin/bash
 echo $OPPIP
 echo $HOME
-ping 25.2.97.87 -c5
+ping $OPPIP -c20
 if [ $? -eq 0 ]
 then
-    sed -i "s/STATUS=.*/STATUS='slave'/g" $HOME/myconf.env
+    sed -i "s/STATUS=.*/STATUS='slave'/g" $HOME/myenv.conf
     export STATUS="slave"
     status="slave"
     echo "This is a slave now"
 else
-    sed -i "s/STATUS=.*/STATUS='master'/g" $HOME/myconf.env
+    sed -i "s/STATUS=.*/STATUS='master'/g" $HOME/myenv.conf
     export STATUS="master"
     status="master"
     echo "This is a master now"
@@ -18,6 +18,9 @@ fi
 #Host starts out as slave or I can change this to env variable
 user=dbroot
 fail_count=0
+
+echo $status
+
 if [ "$status" == "slave" ]
 then  
     echo "Using Slave commands"
@@ -27,7 +30,7 @@ fi
 
 #Host is slave, but can be promoted if master can't be pinged 5 times within 30 seconds
 while [ "$status" != "master" ]
-    do ping -c1 -w1 25.2.97.87
+    do ping -c1 -w1 $OPPIP
         if [ $? -ne 0 ]
         then
             fail_count=$((fail_count + 1))
