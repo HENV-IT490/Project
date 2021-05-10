@@ -8,12 +8,14 @@ then
     export STATUS="HSB"
     status="HSB"
     #execute command to change apache config to reverse to OPPIP
+    $HOME/Project/testing/apacheStatus.sh
     echo "This is a HSB now"
 else
     sed -i "s/STATUS=.*/STATUS='PRIMARY'/g" $HOME/myenv.conf
     export STATUS="PRIMARY"
     status="PRIMARY"
     #execute command to change apache config to remove reverse proxy
+    $HOME/Project/testing/apacheStatus.sh
     echo "This is PRIMARY now"
 fi
 
@@ -44,5 +46,7 @@ while [ "$status" != "PRIMARY" ]
 done
 sed -i "s/STATUS=.*/STATUS='PRIMARY'/g" $HOME/myenv.conf
 echo "Host is now PRIMARY, using commands."
+export STATUS="PRIMARY"
 #execute command to change apache config to remove reverse proxy
+$HOME/Project/testing/apacheStatus.sh
 exec bash
