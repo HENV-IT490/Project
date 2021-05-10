@@ -127,6 +127,15 @@ $.post('http://25.9.149.99/Front/dbClient.php', { username: username, favoriteID
 });
 
 </script>";
+
+echo "<script>
+
+var username=sessionStorage.getItem('username');
+
+$.post('http://25.9.149.99/Front/dbClient.php',{ username: username, recipeID: $recipeID, recipeName: '$recipe', type: 'addHistory'});
+
+</script>";
+
 echo"<script>
 
 $('#submit').click(function(){
