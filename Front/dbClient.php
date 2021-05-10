@@ -79,7 +79,17 @@ if (isset($_POST['submit']))
 		$response=$client->send_request($request);
 		echo $response;
 		return $response;
-
+	case "addHistory":
+		$request['username']=$_POST['username'];
+		$request['recipeID']=$_POST['recipeID'];
+		$request['recipeName']=$_POST['recipeName'];
+		$client->publish($request);
+		return true;
+	case "getHistory":
+		$request['username']=$_POST['username'];
+		$response = $client->send_request($request);
+		return $response;
+		
 	}
 }
 

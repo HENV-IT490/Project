@@ -128,6 +128,7 @@ $.post('http://25.9.149.99/Front/dbClient.php', { username: username, favoriteID
 
 </script>";
 
+//adding to history
 echo "<script>
 
 var username=sessionStorage.getItem('username');

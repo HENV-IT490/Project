@@ -251,6 +251,52 @@ function getCustom($recipe){
 
 }
 
+function addHistory($username, $recipeID, $recipeName)
+{
+  $db=dbConnect();
+  if($db == false){
+    return "DB Connection Refused";
+  }
+  $username=cleanseInput($username, $db);
+  $recipeID=cleanseInput($recipeID, $db);
+  $recipeName=cleanseInput($recipeName, $db);
+  $insertQ="insert into SearchHistory VALUES('$username', '$recipeID', '$recipeName')";
+  if(mysqli_query($db, $insertQ))
+  {
+    $success="$recipeName added to $username's history";
+    echo $success;
+    return true;
+  }
+  else
+  {
+    $error = mysqli_error($db);
+    sendLog(__FILE__.":".__LINE__.":".$error.PHP_EOL);
+    return false;
+  }
+}
+
+function getHistory($username)
+{
+  $db=dbConnect();
+  if($db == false){
+      return "DB Connection Refused";
+  }
+  $username=cleanseInput($username, $db);
+  $selectQ="select recipeID, recipeName from SearchHistory where username='$username'";
+  if(mysqli_num_rows($selectQuery)==0){
+    $re="No history for $username found";
+    echo $re;
+    return false;
+  }
+  $i=0;
+  while($get=mysqli_fetch_array($selectQ)){
+    $data['history'][$i]['recipeID'] = $get['recipeID'];
+    $data['history'][$i]['recipeName'] = $get['recipeName'];
+    $i+=1;
+  }
+  return $data;
+}
+
 function requestProcessor($request)
 {
   echo "received request".PHP_EOL;
