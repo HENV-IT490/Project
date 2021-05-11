@@ -25,7 +25,7 @@ var recipe=$('#recipe').val();
 var submit=$('#submit').val();
 var recipe=$('#recipe').val();
 console.log(recipe);
-$.post('http://25.9.149.99/Front/dbClient.php',{customName: customName,ingredients: ingredients, recipe: recipe,submit: submit, instructions: instructions},function(data){
+$.post('https://gethatrecipe.com/Front/dbClient.php',{customName: customName,ingredients: ingredients, recipe: recipe,submit: submit, instructions: instructions},function(data){
 
     alert(data);
 });

@@ -18,7 +18,7 @@
         'recipeID' => $recipeID
       )
    );
-    $request=file_get_contents('http://25.9.149.99/Front/apiClient.php?'.$getdata,false);
+    $request=file_get_contents('https://gethatrecipe.com/Front/apiClient.php?'.$getdata,false);
     $json=json_decode($request,true);
     $recipe=$json['title'];
     $analyzedResult=$json['analyzedInstructions'][0];
@@ -56,7 +56,7 @@
           'ingredientName' => $urlIngredient
         )
      );
-     $url="http://25.9.149.99/Front/apiClient.php?" ;
+     $url="https://gethatrecipe.com/Front/apiClient.php?" ;
      $jsonAlt=file_get_contents($url.$getdata,false);
         echo "<ul style='line-height:10%'><li> $ingredientName alternative: $jsonAlt </li></ul>";
       }
@@ -75,7 +75,7 @@ for($i=0;$i<count($analyzedResult['steps']);$i+=1){
 }
 
 // Similar Recipe information:
-$jsonSimilar = file_get_contents("http://25.9.149.99/Front/apiClient.php?type=getSimilar&recipeID=$recipeID", false);
+$jsonSimilar = file_get_contents("https://gethatrecipe.com/Front/apiClient.php?type=getSimilar&recipeID=$recipeID", false);
 $similarArray = json_decode($jsonSimilar, true);
 for($i = 0; $i < 3; $i+=1)
 {
@@ -87,11 +87,11 @@ for($i = 0; $i < 3; $i+=1)
   $image_url = "https://spoonacular.com/recipeImages/$id-240x150.$type";
   echo "<img src=$image_url alt='this is a test'><img>";
   echo "<br>";
-  echo "<a href='http://25.9.149.99/Front/recipe.php?type=getName&recipeID=$id'>{$json_array[$i]['title']}</a>";
+  echo "<a href='https://gethatrecipe.com/Front/recipe.php?type=getName&recipeID=$id'>{$json_array[$i]['title']}</a>";
 }
 
 
-echo"<a href='http://25.9.149.99/Front/customRecipe.php?recipe=$recipe'>Click to view/submit custom recipes</a>";
+echo"<a href='https://gethatrecipe.com/Front/customRecipe.php?recipe=$recipe'>Click to view/submit custom recipes</a>";
 echo"<div id='respond'>
 <h3>Leave a Comment</h3> <p>Show comments: <input type='button' id='getComment' value='show'></input></p>
 
@@ -116,7 +116,7 @@ $('#favorite').click(function(){
 var username=sessionStorage.getItem('username');
 var favName=$('#favorite').val();
 var favID=document.getElementById('favoriteID').textContent;
-$.post('http://25.9.149.99/Front/dbClient.php', { username: username, favoriteID: favID, favoriteName: favName, submit: 'favorites'},function(data){
+$.post('https://gethatrecipe.com/Front/dbClient.php', { username: username, favoriteID: favID, favoriteName: favName, submit: 'favorites'},function(data){
 
   if(data!=false){ alert('added dish to favorites');}
   else{ 
@@ -133,7 +133,7 @@ echo "<script>
 
 var username=sessionStorage.getItem('username');
 
-$.post('http://25.9.149.99/Front/dbClient.php',{ username: username, recipeID: $recipeID, recipeName: '$recipe', type: 'addHistory'});
+$.post('https://gethatrecipe.com/Front/dbClient.php',{ username: username, recipeID: $recipeID, recipeName: '$recipe', type: 'addHistory'});
 
 </script>";
 
@@ -146,7 +146,7 @@ $('#submit').click(function(){
   console.log(username);
   console.log(recipe);
   console.log(comment);
-  $.post('http://25.9.149.99/Front/dbClient.php', {username: username, comment: comment, submit: 'comment', recipe: recipe}, function(data){
+  $.post('https://gethatrecipe.com/Front/dbClient.php', {username: username, comment: comment, submit: 'comment', recipe: recipe}, function(data){
   if(data != true){
     alert(data);
   }
@@ -161,7 +161,7 @@ $('#submit').click(function(){
 echo"<script>
   var recipe= $('#recipe').val();
   $('#getComment').click(function(){
-    $('#showComment').load('http://25.9.149.99/Front/loadComment.php',{recipe: recipe},function(){
+    $('#showComment').load('https://gethatrecipe.com/Front/loadComment.php',{recipe: recipe},function(){
       alert('loaded comments');
     });
 
