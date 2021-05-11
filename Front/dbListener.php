@@ -282,7 +282,7 @@ function getHistory($username)
       return "DB Connection Refused";
   }
   $username=cleanseInput($username, $db);
-  $selectQ="select recipeID, recipeName from SearchHistory where username='$username'";
+  $selectQ="select recipeID, recipeName from SearchHistory where username='$username' limit 5";
   if(mysqli_num_rows($selectQuery)==0){
     $re="No history for $username found";
     echo $re;
