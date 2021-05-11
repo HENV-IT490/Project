@@ -390,7 +390,7 @@ if ($status != 'master'){
 }
 */
 
-while (true){
+/*while (true){
   $getEnv=file_get_contents('/home/nickdb/myenv.conf');
   echo $getEnv;
   if($getEnv == "STATUS='master'"){
@@ -401,7 +401,7 @@ while (true){
       echo" This is slave";
   }
   sleep(5);
-  }
+  }*/
 $server = new rabbitMQServer(__DIR__."/../ini/dbRabbitMQ.ini","dbListener");
 
 echo "testRabbitMQServer BEGIN".PHP_EOL;
