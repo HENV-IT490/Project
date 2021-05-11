@@ -1,0 +1,596 @@
+commit 2640ddd6e14d3ed284246dd37111faa4061b4142
+Merge: b7d39c8 6ce29a6
+Author: WretchedPeasant <nikk70346@gmail.com>
+Date:   Mon May 10 19:46:00 2021 -0400
+
+    Merge branch 'midterm' of https://github.com/HENV-IT490/Project into midterm
+
+commit b7d39c8c2dec5009f24d5b4ee24c7caa4c432cad
+Author: WretchedPeasant <nikk70346@gmail.com>
+Date:   Mon May 10 19:45:44 2021 -0400
+
+    asdf
+
+commit 6ce29a6e67d8e2557e060e6ce59d02f302e4badf
+Author: WretchedPeasant <nikk70346@gmail.com>
+Date:   Mon May 10 19:27:33 2021 -0400
+
+    small changes to files
+
+commit f2961e9e53a7d917ad4ea0338aa40c9fddc7bb7d
+Author: WretchedPeasant <nikk70346@gmail.com>
+Date:   Mon May 10 19:15:41 2021 -0400
+
+    small error in status.sh
+
+commit 112b14447f6427a48b1f2681f46f501fd82b4766
+Author: WretchedPeasant <nikk70346@gmail.com>
+Date:   Mon May 10 19:03:28 2021 -0400
+
+    small changes to files
+
+commit 15d202c7d52d7fd583b467c1bf74d55ac3b623be
+Author: WretchedPeasant <nikk70346@gmail.com>
+Date:   Mon May 10 16:21:38 2021 -0400
+
+    apacheStatus debugging
+
+commit fd7463bf9f93cb6feedcd7250b97a2821f45214a
+Author: SirB0b27 <hemanth2355@gmail.com>
+Date:   Mon May 10 13:20:45 2021 -0700
+
+    updated adding and getting from history
+
+commit 1c176e30878209f268fe13405a7369b5d3273f78
+Author: WretchedPeasant <nikk70346@gmail.com>
+Date:   Mon May 10 15:21:02 2021 -0400
+
+    added to the recipe.php for hemanth to work on search history
+
+commit 340289dd655137a2f6350031bd40f34a0066a279
+Author: WretchedPeasant <nikk70346@gmail.com>
+Date:   Mon May 10 12:03:29 2021 -0400
+
+    added apache service
+
+commit c8b327c46dfded3b5078d9ddce299c207b22784f
+Author: WretchedPeasant <nikk70346@gmail.com>
+Date:   Mon May 10 11:22:49 2021 -0400
+
+     added the shell file for apache and some changes in the HSB to use it
+
+commit e0eb3af93597d773a4650a320daec0653252eb01
+Author: WretchedPeasant <nikk70346@gmail.com>
+Date:   Mon May 10 11:08:24 2021 -0400
+
+     added the apache part
+
+commit 605728a50c323cd21422cd2aff7527e518050ffa
+Author: WretchedPeasant <nikk70346@gmail.com>
+Date:   Mon May 10 10:50:30 2021 -0400
+
+    adding the api HSB, soon to come apache
+
+commit 1eb79b48b027ff3a7a46d1033876db5f902f4527
+Merge: 3e892c4 1e9e958
+Author: SirB0b27 <hemanth2355@gmail.com>
+Date:   Sat May 8 10:30:13 2021 -0700
+
+    Merge branch 'midterm' of github.com:HENV-IT490/Project into midterm
+
+commit 1e9e9588a7d7eaaef50e067ef946f17eae626a91
+Author: WretchedPeasant <nikk70346@gmail.com>
+Date:   Sat May 8 13:29:28 2021 -0400
+
+    adding some small changes to the amount of pings
+
+commit 3e892c461026ea39d9a1d707184b7bd40f1304ba
+Author: SirB0b27 <hemanth2355@gmail.com>
+Date:   Sat May 8 10:28:44 2021 -0700
+
+    added similar recipe information
+
+commit 501aea4c16b19a9dae673d8bda79a522cb8947b3
+Author: WretchedPeasant <nikk70346@gmail.com>
+Date:   Sat May 8 13:25:40 2021 -0400
+
+    some other minor changes in status.sh
+
+commit 6c3a362b7217cc6c7740d00c8ec8a5fed9b06f3a
+Author: WretchedPeasant <nikk70346@gmail.com>
+Date:   Fri May 7 23:02:12 2021 -0400
+
+    finally got some stuff work thank god
+
+commit cdccffbee16dddc741c95ad4e1af3ab8540ffe3a
+Author: WretchedPeasant <nikk70346@gmail.com>
+Date:   Fri May 7 16:56:44 2021 -0400
+
+    adding because disk space low
+
+commit 65bc85ab76ef681b03805f60735dd9380cd6f3ca
+Author: WretchedPeasant <nikk70346@gmail.com>
+Date:   Thu May 6 22:11:32 2021 -0400
+
+    im going to change this more
+
+commit 6cdb0a488f5aec81e67c2c549d5b5515ebc8d336
+Author: WretchedPeasant <nikk70346@gmail.com>
+Date:   Thu May 6 21:56:53 2021 -0400
+
+    changing alot things
+
+commit b8807e34f45f4c9f05b0b84b1c8b23c2f4f07b81
+Author: WretchedPeasant <nikk70346@gmail.com>
+Date:   Thu May 6 19:51:39 2021 -0400
+
+    small
+
+commit 5ea17f62895525f173910b4562d8c732a55ecad1
+Author: WretchedPeasant <nikk70346@gmail.com>
+Date:   Thu May 6 19:33:56 2021 -0400
+
+    added some changes so shell script works as intended
+
+commit c46c4f3e7d7e3a9f605b8001900b5e08bc0f2b10
+Author: WretchedPeasant <nikk70346@gmail.com>
+Date:   Wed May 5 23:25:19 2021 -0400
+
+    adding
+
+commit 7b24a9040bb7d0306dde18ca31b2569e5be0c77d
+Author: WretchedPeasant <nikk70346@gmail.com>
+Date:   Wed May 5 23:16:40 2021 -0400
+
+    adding to service agia
+
+commit 624020b09214813f69cd14a36fba62d0402bc7b3
+Author: WretchedPeasant <nikk70346@gmail.com>
+Date:   Wed May 5 22:39:54 2021 -0400
+
+    adding some more
+
+commit 0cedeb599a58d380f1c0d96036c691e6e98698b2
+Author: WretchedPeasant <nikk70346@gmail.com>
+Date:   Wed May 5 20:57:56 2021 -0400
+
+    adding services onto this
+
+commit 6880c4d44e0fad42f5147cce72a23ab712877932
+Author: WretchedPeasant <nikk70346@gmail.com>
+Date:   Wed May 5 15:26:54 2021 -0400
+
+    adding the slave replication switch
+
+commit e1ac3637c4ccfd5931bb51e279bd8f26c0816c11
+Author: Emmii <em368@njit.com>
+Date:   Wed Apr 28 13:18:27 2021 -0400
+
+    mysqldump
+
+commit 3c01f82ed80bfb2030136b8aa98fbecf994a4f27
+Author: root <root@jav69-VirtualBox>
+Date:   Tue Apr 20 15:01:09 2021 -0400
+
+    Configuration for the forum recipe
+
+commit 3d28c5ddf6d2e88148b7014a3f2859ee1f2a3b93
+Author: Wretchepeasant <nikk70346@gmail.com>
+Date:   Thu Apr 8 12:13:53 2021 -0400
+
+    same stuff
+
+commit 25a0b055579875abd655ff1d471a72c2567f6319
+Author: Wretchepeasant <nikk70346@gmail.com>
+Date:   Thu Apr 8 12:08:05 2021 -0400
+
+    service.service
+
+commit b1bd72483c669011df0e76b55f91863245b17470
+Author: Wretchepeasant <nikk70346@gmail.com>
+Date:   Thu Apr 8 11:42:09 2021 -0400
+
+    minor changes to the same
+
+commit c299d03b2818e2879892a10c1a393451ea4f6cdf
+Merge: 0025726 bde3f2f
+Author: Wretchepeasant <nikk70346@gmail.com>
+Date:   Thu Apr 8 11:32:02 2021 -0400
+
+    Merge branch 'midterm' of https://github.com/HENV-IT490/Project into midterm
+
+commit 00257263640a876a7c00b5d548249f24ed9bf3a7
+Author: Wretchepeasant <nikk70346@gmail.com>
+Date:   Thu Apr 8 11:31:05 2021 -0400
+
+    added changes to includes for systemd
+
+commit bde3f2f55422ac6034a4617a65e6e93face1e16c
+Author: Wretchedpeasant <nikk70346@gmail.com>
+Date:   Mon Mar 22 21:03:40 2021 -0400
+
+    made a cahnage to dbListerner
+
+commit ba0588ebed77fdeb74100318fd3bbb81f2e898d2
+Author: Wretchepeasant <nikk70346@gmail.com>
+Date:   Mon Mar 22 20:43:42 2021 -0400
+
+    made some more changes to ip
+
+commit f083fa3249ae1e79ff1a569982164731b617cb03
+Author: Wretchepeasant <nikk70346@gmail.com>
+Date:   Sat Mar 20 21:24:07 2021 -0400
+
+    midterm part 2!
+
+commit c1f4089549dd1a1e9bf96388be7e783da7875b9b
+Author: Wretchepeasant <nikk70346@gmail.com>
+Date:   Sat Mar 20 19:32:21 2021 -0400
+
+    midterm readygit commit -m git commit -m git commit -m git commit -m git commit -m
+
+commit 8367b15f585e700a9f2405f520e2df620417e866
+Author: Wretchepeasant <nikk70346@gmail.com>
+Date:   Sat Mar 20 18:47:19 2021 -0400
+
+    changed ip to vraj
+
+commit 4499173321bca4c9e423deea5420e0e344667e34
+Author: Wretchepeasant <nikk70346@gmail.com>
+Date:   Sat Mar 20 18:40:10 2021 -0400
+
+    fixed logger by using publish for oneway message, reformatted query/error handling in mysql
+
+commit 2b76863d486efb78c9517fa33f3bf15974679982
+Author: Wretchepeasant <nikk70346@gmail.com>
+Date:   Sat Mar 20 18:06:27 2021 -0400
+
+    fixed logger by using publish for oneway message, reformatted query/error handling in mysql
+
+commit c6c8a6270ece58139f7127b4437b75f211abd6a1
+Author: Wretchepeasant <nikk70346@gmail.com>
+Date:   Sat Mar 20 14:05:22 2021 -0400
+
+    changed some db stuff with checking and logs
+
+commit 298b4442e9adbb53b7184adc1c78f16d5685ec44
+Author: Wretchepeasant <nikk70346@gmail.com>
+Date:   Sat Mar 20 13:54:52 2021 -0400
+
+    changing the profile display
+
+commit 5a1fdef6a62b0cfb2a580686839deff448a37277
+Author: Wretchepeasant <nikk70346@gmail.com>
+Date:   Sat Mar 20 13:38:22 2021 -0400
+
+    changing ip address
+
+commit 75f9d8bbda013829f3cadb257fa8bbff4a06298d
+Author: Wretchepeasant <nikk70346@gmail.com>
+Date:   Sat Mar 20 13:22:55 2021 -0400
+
+    changed some url
+
+commit edbf32f0923d70a7a2834414d4641465afa2e336
+Author: Wretchepeasant <nikk70346@gmail.com>
+Date:   Sat Mar 20 13:17:27 2021 -0400
+
+    changed some url
+
+commit 55b1da6594cb4c07050ee06cba600ea6e8948da2
+Author: SirB0b27 <hemanth2355@gmail.com>
+Date:   Sat Mar 20 09:37:01 2021 -0700
+
+    added search option to all html pages
+
+commit 07da8f47a9d0acf9275163956fed4942beeb1134
+Author: Wretchepeasant <nikk70346@gmail.com>
+Date:   Sat Mar 20 12:30:45 2021 -0400
+
+    got rid of file_put_contents because it would throw erros for different machines
+
+commit 0e54806cc80913c6f85b3d19e2ab8cd92d88d207
+Author: Wretchepeasant <nikk70346@gmail.com>
+Date:   Sat Mar 20 12:14:25 2021 -0400
+
+    added get
+
+commit 1bdd922b247aa56dacc0a50969ba23b7ad1d0079
+Author: SirB0b27 <hemanth2355@gmail.com>
+Date:   Sat Mar 20 09:12:18 2021 -0700
+
+    removed git merge message
+
+commit 26c1910573e4d3bdf4bae32e0ffc0bfab740ffea
+Author: SirB0b27 <hemanth2355@gmail.com>
+Date:   Fri Mar 19 10:37:47 2021 -0700
+
+    added search option to nav bar and stylized search page along
+
+commit abbcf91feb21caa27f1ffceff9dcfe6d3ecc3828
+Author: Wretchepeasant <nikk70346@gmail.com>
+Date:   Thu Mar 18 23:58:46 2021 -0400
+
+    think it works now
+
+commit 2e548660e2d66191cf1c0b3193aaec1027daed09
+Author: Wretchepeasant <nikk70346@gmail.com>
+Date:   Thu Mar 18 23:57:05 2021 -0400
+
+    tried manual
+
+commit 19c7bcdc02e0aea40150453b80af2382af726a8c
+Author: Emmii <em368@njit.com>
+Date:   Wed Feb 24 17:43:53 2021 -0500
+
+    cosmetic changes to git
+
+commit 5b48d9544101d08e7b4d12d55f4ff65dc994f8e2
+Author: Emmii <em368@njit.com>
+Date:   Wed Feb 24 17:37:18 2021 -0500
+
+    Added more front end stuff
+
+commit 0515d4152c988f978af7cfab779812d5d36c9a78
+Author: Emmii <em368@njit.com>
+Date:   Tue Feb 23 14:30:37 2021 -0500
+
+    Added signin page
+
+commit 2f1a1031be2098a9bffbb32253e452d53494e71b
+Author: Wretchedpeasant <nikk70346@gmail.com>
+Date:   Mon Feb 22 16:44:42 2021 -0500
+
+    Added input cleanse, test sucess for authentication
+
+commit 1e08e3943553d0b28767304976e679b7ce818095
+Author: Wretchedpeasant <nikk70346@gmail.com>
+Date:   Sun Feb 21 18:58:42 2021 -0500
+
+    changed mysql function for database connect error
+
+commit 82debfac6a8cc0e8fdc194fa3336ccbcbcfd691a
+Author: Wretchedpeasant <nikk70346@gmail.com>
+Date:   Sun Feb 21 18:37:33 2021 -0500
+
+    Making changes to test db listener
+
+commit 446dd53f3e6137dd949ca842a75e5bb6fbc89c42
+Author: Wretchedpeasant <nikk70346@gmail.com>
+Date:   Sun Feb 21 18:15:36 2021 -0500
+
+    Quick hash
+
+commit 97576c179e25d7ab08ef6b42481602e57013e9ca
+Author: Wretchedpeasant <nikk70346@gmail.com>
+Date:   Sun Feb 21 17:56:47 2021 -0500
+
+    changed table collumn username to usrname (for test)
+
+commit bc941009d6f980b325f46e866b82ae268785acda
+Author: Wretchedpeasant <nikk70346@gmail.com>
+Date:   Sun Feb 21 17:41:37 2021 -0500
+
+    Nick db listener, maybe unfinished
+
+commit c008722b876daa83bc12dc5c2cb7798039d963fc
+Author: Wretchedpeasant <nikk70346@gmail.com>
+Date:   Sun Feb 21 15:59:13 2021 -0500
+
+    Made changes to rabbitmql ib to accept routing key in ini files
+
+commit ac0913de1117534ce9eb8bb4831a28d68d478ca4
+Author: Wretchedpeasant <nikk70346@gmail.com>
+Date:   Mon Feb 8 22:48:01 2021 -0500
+
+    Logger update
+
+commit 65348b2187c82c63f5db727be5057298f1c6aeb9
+Author: Wretchedpeasant <nikk70346@gmail.com>
+Date:   Mon Feb 8 22:37:16 2021 -0500
+
+    Logger introduction
+
+commit 42d648c561a07a24ab901c8e63358e089fe4d056
+Author: SirB0b27 <61483017+SirB0b27@users.noreply.github.com>
+Date:   Mon Feb 8 21:56:25 2021 -0500
+
+    Delete Project directory
+
+commit addffb759473f293e7fac3064e55b6a653ee2546
+Author: Hemanth Velan <hemanth2355@gmail.com>
+Date:   Mon Feb 8 21:55:33 2021 -0500
+
+    Reorganization of RabbitMQ Files
+
+commit 0b7ebcbbf5f0f4ac620b58c0abaa5f5217a0cf0a
+Author: SirB0b27 <61483017+SirB0b27@users.noreply.github.com>
+Date:   Mon Feb 8 21:50:35 2021 -0500
+
+    Delete testphp.php
+
+commit d762611a9aa094d27e6e15ab67a2e521e7ae7b4d
+Author: SirB0b27 <61483017+SirB0b27@users.noreply.github.com>
+Date:   Mon Feb 8 21:50:26 2021 -0500
+
+    Delete testRabbitMQServer.php
+
+commit f645d741d88fcc3dc8c40f0923fc9890a9bd7231
+Author: SirB0b27 <61483017+SirB0b27@users.noreply.github.com>
+Date:   Mon Feb 8 21:50:16 2021 -0500
+
+    Delete testRabbitMQServer.monit
+
+commit 22d298614edb5e76912cb72ed6c1498539041750
+Author: SirB0b27 <61483017+SirB0b27@users.noreply.github.com>
+Date:   Mon Feb 8 21:49:59 2021 -0500
+
+    Delete testRabbitMQServer.conf
+
+commit 803423d17757931ef6e073fa3883a2702919fdbc
+Author: SirB0b27 <61483017+SirB0b27@users.noreply.github.com>
+Date:   Mon Feb 8 21:49:44 2021 -0500
+
+    Delete testRabbitMQClient.php
+
+commit 3e65230a5403177c36fa1de12444816a600d3d75
+Author: SirB0b27 <61483017+SirB0b27@users.noreply.github.com>
+Date:   Mon Feb 8 21:49:31 2021 -0500
+
+    Delete testRabbitMQ.ini
+
+commit a5a5cc10c125746e1625cc0bc0548f38b5218486
+Author: SirB0b27 <61483017+SirB0b27@users.noreply.github.com>
+Date:   Mon Feb 8 21:49:20 2021 -0500
+
+    Delete soccerData.php
+
+commit d268d28e600b5829a078d29d37dbb3dfbbc4c388
+Author: SirB0b27 <61483017+SirB0b27@users.noreply.github.com>
+Date:   Mon Feb 8 21:48:29 2021 -0500
+
+    Delete rabbitMQLib.inc
+
+commit ca5f18bfe8dc49164ff9e5fce07cc6afda3f3367
+Author: SirB0b27 <61483017+SirB0b27@users.noreply.github.com>
+Date:   Mon Feb 8 21:47:57 2021 -0500
+
+    Delete path.inc
+
+commit 56004b51a5d3c61e3e639250d58e88db914afa50
+Author: SirB0b27 <61483017+SirB0b27@users.noreply.github.com>
+Date:   Mon Feb 8 21:47:36 2021 -0500
+
+    Delete mongoClient.php
+
+commit 38f099712cd74c1359bd9d02213ed533a3eaa1fc
+Author: SirB0b27 <61483017+SirB0b27@users.noreply.github.com>
+Date:   Mon Feb 8 21:47:22 2021 -0500
+
+    Delete local.ini
+
+commit a9e4cf0b024c9c395053673ca9266ec5b6ebc713
+Author: SirB0b27 <61483017+SirB0b27@users.noreply.github.com>
+Date:   Mon Feb 8 21:47:07 2021 -0500
+
+    Delete host.ini
+
+commit d2e78c7ee591f3a717f20c1871e785d0c7c9e056
+Author: SirB0b27 <61483017+SirB0b27@users.noreply.github.com>
+Date:   Mon Feb 8 21:46:57 2021 -0500
+
+    Delete get_host_info.inc
+
+commit 5cab30ea48a6520a437d419dd791b8bf3ca376dc
+Author: SirB0b27 <61483017+SirB0b27@users.noreply.github.com>
+Date:   Mon Feb 8 21:43:05 2021 -0500
+
+    Delete composer.json
+
+commit a8e16d8e77199754e77938014318d72c999b0197
+Author: SirB0b27 <61483017+SirB0b27@users.noreply.github.com>
+Date:   Mon Feb 8 21:42:37 2021 -0500
+
+    Delete rpc directory
+
+commit b5d437cad9eca88499cf68d8404c7b1c4329d64e
+Author: Hemanth Velan <hemanth2355@gmail.com>
+Date:   Mon Feb 8 21:38:40 2021 -0500
+
+    Reorganization of RabbitMQ Files
+
+commit c5df08086a7436476be9af85050ac385a1cf004c
+Author: DJ Kehoe <kehoed@njit.edu>
+Date:   Tue Sep 11 12:49:58 2018 -0400
+
+    added output to show server is working
+
+commit 32cf6da273f4db03e7c38adfa0528b1c73577a52
+Author: DJ Kehoe <donald.j.kehoe@gmail.com>
+Date:   Thu Oct 6 10:46:36 2016 -0400
+
+    class examples
+
+commit f87726de824fc28436c1929575ccc9ae6d36d123
+Author: engineerOfLies <donald.j.kehoe@gmail.com>
+Date:   Fri Nov 13 19:56:45 2015 -0500
+
+    added monit and upstart config file examples
+
+commit 01bd69e04ecb921f65c4d80efafa5d74d5fb93f1
+Author: engineerOfLies <donald.j.kehoe@gmail.com>
+Date:   Fri Oct 16 20:29:18 2015 -0400
+
+    sample api call added
+
+commit 64ff8b1f74b8ddb491c62f19eff4c631633c2187
+Author: engineerOfLies <donald.j.kehoe@gmail.com>
+Date:   Fri Oct 16 19:56:24 2015 -0400
+
+    updated mongo sample code
+
+commit 19db8d04a49377ff12b0f18b08576154ed22c583
+Author: engineerOfLies <donald.j.kehoe@gmail.com>
+Date:   Fri Oct 16 18:35:44 2015 -0400
+
+    removed unnecessary trace from the client rabbitmq lib
+
+commit 1ca1bab0b182a6d5e1146db86205371dbb8abb48
+Author: engineerOfLies <donald.j.kehoe@gmail.com>
+Date:   Fri Oct 16 16:07:11 2015 -0400
+
+    two way communication is now functioning
+
+commit d86e0c82eea9b0de106d2bb953651fd144c2c8f7
+Author: engineerOfLies <donald.j.kehoe@gmail.com>
+Date:   Fri Oct 2 20:38:16 2015 -0400
+
+    adding test mongo connection
+
+commit 9d45d42b00eaef5a998dabe4dc353664c7fc26bb
+Author: engineerOfLies <donald.j.kehoe@gmail.com>
+Date:   Fri Oct 2 19:10:09 2015 -0400
+
+    updated INI file
+
+commit 0bfffd8d4d5888f25a28361556eebc547485b9be
+Author: engineerOfLies <donald.j.kehoe@gmail.com>
+Date:   Fri Oct 2 19:07:05 2015 -0400
+
+    added whitespace for example
+
+commit 66f3db9ab6bf2d9c1ce9cd89e8bb727b7b9a3d5b
+Author: engineerOfLies <donald.j.kehoe@gmail.com>
+Date:   Fri Oct 2 18:05:37 2015 -0400
+
+    adding in test client
+
+commit 7d19eb38d4130e9150bcd07a85c6c536de77dd8c
+Author: engineerOfLies <donald.j.kehoe@gmail.com>
+Date:   Fri Oct 2 17:59:42 2015 -0400
+
+    fixed message delivery
+
+commit 9a7726990cca953320b57b7a0143c8b4f923d7b6
+Author: engineerOfLies <donald.j.kehoe@gmail.com>
+Date:   Fri Oct 2 17:29:18 2015 -0400
+
+    one-way publish is now working
+
+commit 5092cb0845a05bed44d6881bb2dd43506adbc34b
+Author: engineerOfLies <donald.j.kehoe@gmail.com>
+Date:   Fri Sep 25 20:58:08 2015 -0400
+
+    more robust, still not working
+
+commit 3091290f67585d8b70c9f87aa1815646cac6b4c5
+Author: engineerOfLies <donald.j.kehoe@gmail.com>
+Date:   Tue Sep 22 16:04:48 2015 -0400
+
+    a default path setup / override php script
+
+commit 36f9708088dffe0f7442031e0a377ab1042c0cb3
+Author: engineerOfLies <donald.j.kehoe@gmail.com>
+Date:   Tue Sep 22 16:02:44 2015 -0400
+
+    adding in local host ini loader
