@@ -10,6 +10,7 @@ if (isset($_POST['submit']))
 	$client = new rabbitMQClient("../ini/dbRabbitMQ.ini","dbListener");
 	$request = array();
 	$request['type']=$_POST['submit'];
+	$host = $_SERVER['HTTP_HOST'];
 	switch($request['type']){
 
 	case "login":
@@ -23,7 +24,8 @@ if (isset($_POST['submit']))
 
 		if ($response==false){
 			echo ("false");
-			header("Location: https://gethatrecipe.com/Front/index.html");
+			header("Location: index.html");
+			exit;
 		}
 
 		echo "<script>
@@ -31,7 +33,7 @@ if (isset($_POST['submit']))
 		sessionStorage.setItem('username','$username');
 		sessionStorage.setItem('token', '$sessionToken');</script>";
 		echo"Success";
-		header('refresh:2;url=Profile.html');
+		header("Location: Profile.html");
 		return;
 
 	case "create-account":
@@ -41,7 +43,7 @@ if (isset($_POST['submit']))
 		//might have JS check if passwords are equal before allowing
 		//to submit if we have pw confirm.
 		$response= $client->send_request($request);
-		header("refresh:0; url=https://gethatrecipe.com/Front/index.html");
+		header("refresh:0; url=https://$host/Front/index.html");
   		//if response is true aka the account create
 		//redirect to another page or have them login now
 		//else, tell them account already exists or (later on we

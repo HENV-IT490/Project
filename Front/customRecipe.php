@@ -54,6 +54,7 @@ require_once('../RabbitMQ/path.inc');
 require_once('../RabbitMQ/get_host_info.inc');
 require_once('../RabbitMQ/rabbitMQLib.inc');
 ini_set('display_errors',1);
+$host = $_SERVER['HTTP_HOST'];
 $recipe=$_GET['recipe'];
 echo"<h3>Submit your own recipe for $recipe!</h3>
 <input type='hidden' id='recipe' value='$recipe'> </input>
@@ -75,7 +76,7 @@ var recipe=$('#recipe').val();
 var submit=$('#submit').val();
 var recipe=$('#recipe').val();
 console.log(recipe);
-$.post('https://gethatrecipe.com/Front/dbClient.php',{customName: customName,ingredients: ingredients, recipe: recipe,submit: submit, instructions: instructions},function(data){
+$.post('https://$host/Front/dbClient.php',{customName: customName,ingredients: ingredients, recipe: recipe,submit: submit, instructions: instructions},function(data){
 
     alert(data);
 });

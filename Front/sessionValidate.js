@@ -8,6 +8,7 @@
 		//if either is empty, attempt to get sessionStorage from
 		//other (page that might be open), Otherwise, just clear() +
 		//redirect
+		var ho;
 		$.post('https://gethatrecipe.com/Front/sessionValidate.php',{username: sessionUID, token: sessionTOKEN}, function(data){
 			console.log(data);
 			check(data);
