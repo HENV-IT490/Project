@@ -20,7 +20,7 @@
     <link href="starter-template.css" rel="stylesheet">
     <link href="signin.css" rel="stylesheet">
   </head>
-  <body>
+  <body> 
     
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
   <div class="container-fluid">
@@ -38,7 +38,7 @@
           <a class="nav-link active" href="Profile.html">Profile</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="search.html">Search</a>
+          <a class="nav-link active" href="search.php">Search</a>
         </li>
         <li class="nav-item">
           <a class="nav-link active" href="Sign-out.php">Sign Out</a>
@@ -46,6 +46,7 @@
       </ul>
     </div>
   </div>
+</body>
 </nav>
 </html>
 
@@ -56,14 +57,16 @@ require_once('../RabbitMQ/rabbitMQLib.inc');
 ini_set('display_errors',1);
 $host = $_SERVER['HTTP_HOST'];
 $recipe=$_GET['recipe'];
-echo"<h3>Submit your own recipe for $recipe!</h3>
+echo"<div align=left>
+Submit your own recipe for $recipe! </br>
 <input type='hidden' id='recipe' value='$recipe'> </input>
 <input type='textbox' id='customName' name='customName' placeholder='Custom Recipe Name *Required*'></input></br>
-<h3>Ingredients List</h3></br>
-<textarea name='ingredients' id='ingredients' rows='10' tabindex='4'cols='30' placeholder='500 characters max' maxlength='500' required='required'></textarea></br>
-<h3>Recipe Instructions</h3></br>
-<textarea name='instructions' id='instructions' rows='10' tabindex='4'cols='30' placeholder='500 characters max' maxlength='500' required='required'></textarea> </br>
+Ingredients List:</br>
+<textarea name='ingredients' id='ingredients' rows='5' tabindex='4'cols='20' placeholder='500 characters max' maxlength='500' required='required'></textarea></br>
+Recipe Instructions:</br>
+<textarea name='instructions' id='instructions' rows='5' tabindex='4'cols='20' placeholder='500 characters max' maxlength='500' required='required'></textarea> </br>
 <button id='submit'value='makeCustomRecipe'>submit</button>
+</div>
 
 
 <script src='https://code.jquery.com/jquery-3.6.0.min.js'> </script>
@@ -94,15 +97,12 @@ $response = $client->send_request($request);
 $wholeHTML="";
 if($response!= false){
 for($i=0;$i<count($response['recipes']);$i+=1){
+
 $customName=$response['recipes'][$i]['customName'];
 $instructions= $response['recipes'][$i]['instructions'];
 $ingredients=$response['recipes'][$i]['ingredients'];
-$wholeHTML=$wholeHTML."<label>Custom Recipe:$customName for $recipe </label></br> 
-<textarea rows='10' readonly='true' style='font-size: 12pt' tabindex='4'cols='60'>Ingredients:$ingredients 
-
-
-
-Instructions:$instructions</textarea></br>";
+$wholeHTML=$wholeHTML."<div align=center><label>Custom Recipe:$customName for $recipe </label></br> 
+<textarea rows='5' readonly='true' style='font-size: 10pt' tabindex='4'cols='30'align='center'>Ingredients:$ingredients Instructions:$instructions</textarea></div></br>";
 }
 } else{echo "No comments yet! How bout you make one wink wink.";}
 

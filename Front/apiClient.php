@@ -29,6 +29,7 @@
         echo $response;
         exit();
       case "getRecipeList":
+        include('header.php');
         $request['ingredients']= $_GET['ingredients'];
         $response= $client->send_request($request);
         $json_a=json_decode($response, true);
@@ -70,7 +71,8 @@
     $count=count($json_a['results']);
    
   //For substitution make a way to ignore required ingredients e.g. chicken in chicken marsala
-    for($i =0; $i < $count ; $i+=1)
+    for($i =0; $i < $count ; $i+=1)id=$i'> {$json_a['results'][$i]['title']}</a></br><img src={$json_a['results'][$i]['image']} ></img></br><html>";
+    }
     {
         echo "<html><a href='recipe.php?id=$i'> {$json_a['results'][$i]['title']}</a></br><img src={$json_a['results'][$i]['image']} ></img></br><html>";
     }

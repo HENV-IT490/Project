@@ -1,4 +1,6 @@
-<!doctype html>
+<?php
+$host=$_SERVER['HTTP_HOST'];
+echo'
 <html lang="en" class="h-100">
   <head>
     <meta charset="utf-8">
@@ -62,20 +64,20 @@
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
     <script>
       $(document).ready(function(){
-        var username=sessionStorage.getItem('username');
-        $.post('dbClient.php', {type: 'getHistory', username: username}, function(data){
+        var username=sessionStorage.getItem("username");
+        $.post("dbClient.php", {type: "getHistory", username: username}, function(data){
           console.log(data);
           console.log(data.history[0].recipeID);
           console.log(data.history[0].recipeName);
           for(var i=0; i < data.history.length; i+=1)
           {
             //
-            var baseURL="http://25.9.149.99/Front/recipe.php?recipeID="
+            var baseURL="https://gethatrecipe.com/Front/recipe.php?recipeID="
             var recipeID = data.history[i].recipeID;
             var url = baseURL+recipeID;
             var recipeName = data.history[i].recipeName;
             console.log(url);
-            $("<a/>").html(recipeName).attr('href',url).appendTo("#hist");
+            $("<a/>").html(recipeName).attr("href",url).appendTo("#hist");
           }
         });
       });
@@ -93,5 +95,6 @@
 
     
   </body>
-</html>
+</html>';
 
+?>
