@@ -1,5 +1,6 @@
 <?php
 $host=$_SERVER['HTTP_HOST'];
+
 echo'
 <html lang="en" class="h-100">
   <head>
@@ -60,7 +61,7 @@ echo'
     </br>
     <p id="hist"></p>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="http://25.9.149.99/Front/sessionValidate.js"></script>
+    <script src="http:gethatrecipe.com/Front/sessionValidate.js"></script>
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
     <script>
       $(document).ready(function(){

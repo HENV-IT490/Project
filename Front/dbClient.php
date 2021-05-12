@@ -31,7 +31,9 @@ if (isset($_POST['submit']))
 		echo "<script>
 		var sessionStorage=window.sessionStorage;
 		sessionStorage.setItem('username','$username');
-		sessionStorage.setItem('token', '$sessionToken');</script>";
+		sessionStorage.setItem('token', '$sessionToken');
+		console.log(sessionStorage.getItem('username');
+		</script>";
 		echo"Success";
 		header("Location: Profile.html");
 		return;
