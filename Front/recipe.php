@@ -183,7 +183,11 @@ echo "<script>
 
 var username=sessionStorage.getItem('username');
 
-$.post('https://gethatrecipe.com/Front/dbClient.php',{ username: username, recipeID: $recipeID, recipeName: '$recipe', type: 'addHistory'});
+$.post('https://gethatrecipe.com/Front/dbClient.php',{ username: username, recipeID: $recipeID, recipeName: '$recipe', type: 'addHistory'}, function(data){
+  console.log(username);
+  alert(username);
+}
+);
 
 </script>";
 
