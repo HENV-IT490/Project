@@ -371,8 +371,8 @@ if ($status != 'master'){
   echo "status == master";
 }
 */
-$state=true
-while (true){
+$state=true;
+while ($state==true){
   $getEnv=file_get_contents('/usr/local/bin/myenv.conf');
   echo $getEnv;
   if($getEnv == "STATUS='master'"){
@@ -381,9 +381,9 @@ while (true){
   }
   else if ($getEnv == "STATUS='slave'"){
       echo" This is slave";
-      sleep(5);
   }
-};
+  sleep(5);
+}
 $server = new rabbitMQServer(__DIR__."/../ini/dbRabbitMQ.ini","dbListener");
 
 echo "testRabbitMQServer BEGIN".PHP_EOL;
