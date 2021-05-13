@@ -3,7 +3,7 @@ After=network-online.target logmein-hamachi.service
 Wants=network-online.target logmein-hamachi.service
 [Service]
 ExecStartPre=/bin/sleep 20
-ExecStart=/home/nickdb2/Project/testing/apachehsb.sh
-Environment="HOME=/home/nickdb2" "OPPIP=25.88.146.125"
+ExecStart=/usr/local/bin/apachehsb.sh
+Environment="HOME=/home/vp347IT490HSB" "OPPIP=25.9.149.99"
 [Install]
 WantedBy=multi-user.target  
