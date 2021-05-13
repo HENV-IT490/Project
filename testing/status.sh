@@ -1,15 +1,15 @@
 #!/bin/bash
 echo $OPPIP
-echo $HOME
+echo /usr/local/bin
 ping $OPPIP -c20
 if [ $? -eq 0 ]
 then
-    sed -i "s/STATUS=.*/STATUS='slave'/g" $HOME/myenv.conf
+    sed -i "s/STATUS=.*/STATUS='slave'/g" /usr/local/bin/myenv.conf
     export STATUS="slave"
     status="slave"
     echo "This is a slave now"
 else
-    sed -i "s/STATUS=.*/STATUS='master'/g" $HOME/myenv.conf
+    sed -i "s/STATUS=.*/STATUS='master'/g" /usr/local/bin/myenv.conf
     export STATUS="master"
     status="master"
     echo "This is a master now"
@@ -46,7 +46,7 @@ while [ "$status" != "master" ]
         fi
         sleep 3
 done
-sed -i "s/STATUS=.*/STATUS='master'/g" $HOME/myenv.conf
+sed -i "s/STATUS=.*/STATUS='master'/g" /usr/local/bin/myenv.conf
 echo "Host is now Master, using commands."
 #insert mysql commands to switch slave to master/master commands
 mysql -u$user test -Bse "stop slave; reset slave;"
