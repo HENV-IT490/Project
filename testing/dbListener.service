@@ -2,7 +2,7 @@
 After=statuschange.service
 Wants=statuschange.service
 [Service]
-ExecStart=/home/nickdb/Project/Front/dbListener.php
+ExecStart=/usr/local/bin/Project/Front/dbListener.php
 Environment='HOME=/home/nickdb'
 ExecStartPre=/bin/sleep 30
 [Install]

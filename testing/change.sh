@@ -29,7 +29,7 @@ while [ "$status" != "master" ]
         fi
         sleep 3
 done
-sed -i "s/STATUS=.*/STATUS='master'/g" $HOME/.bashrc
+sed -i "s/STATUS=.*/STATUS='master'/g" /usr/local/bin/myenv.conf
 echo "Host is now Master, using commands."
 #insert mysql commands to switch slave to master/master commands
 mysql -u$user test -Bse "stop slave; reset slave;"

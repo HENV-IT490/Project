@@ -2,7 +2,7 @@
 After=network-online.target logmein-hamachi.service
 Wants==network-online.target logmein-hamachi.service
 [Service]
-ExecStartPre=/bin/sleep 10
-ExecStart=/home/nickdb/Project/testing/change.sh
+ExecStartPre=/bin/sleep 20
+ExecStart=/usr/local/bin/Project/testing/change.sh
 [Install]
 WantedBy=multi-user.target
