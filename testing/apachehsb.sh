@@ -4,18 +4,18 @@ echo $HOME
 ping $OPPIP -c20
 if [ $? -eq 0 ]
 then
-    sed -i "s/STATUS=.*/STATUS='HSB'/g" $HOME/myenv.conf
+    sed -i "s/STATUS=.*/STATUS='HSB'/g" /usr/local/bin/myenv.conf
     export STATUS="HSB"
     status="HSB"
     #execute command to change apache config to reverse to OPPIP
-    $HOME/Project/testing/apacheStatus.sh
+    /usr/local/bin/Project/testing/apacheStatus.sh
     echo "This is a HSB now"
 else
-    sed -i "s/STATUS=.*/STATUS='PRIMARY'/g" $HOME/myenv.conf
+    sed -i "s/STATUS=.*/STATUS='PRIMARY'/g" /usr/local/bin/myenv.conf
     export STATUS="PRIMARY"
     status="PRIMARY"
     #execute command to change apache config to remove reverse proxy
-    $HOME/Project/testing/apacheStatus.sh
+    /usr/local/bin/Project/testing/apacheStatus.sh
     echo "This is PRIMARY now"
 fi
 
@@ -44,9 +44,9 @@ while [ "$status" != "PRIMARY" ]
         fi
         sleep 3
 done
-sed -i "s/STATUS=.*/STATUS='PRIMARY'/g" $HOME/myenv.conf
+sed -i "s/STATUS=.*/STATUS='PRIMARY'/g" /usr/local/bin/myenv.conf
 echo "Host is now PRIMARY, using commands."
 export STATUS="PRIMARY"
 #execute command to change apache config to remove reverse proxy
-$HOME/Project/testing/apacheStatus.sh
+/usr/local/bin/Project/testing/apacheStatus.sh
 exec bash
