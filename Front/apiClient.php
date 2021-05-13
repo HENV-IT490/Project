@@ -29,6 +29,7 @@
         echo $response;
         exit();
       case "getRecipeList":
+        include ('header.php');
         $request['ingredients']= $_GET['ingredients'];
         $response= $client->send_request($request);
         $json_a=json_decode($response, true);
