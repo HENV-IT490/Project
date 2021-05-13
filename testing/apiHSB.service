@@ -3,7 +3,7 @@ After=network-online.target logmein-hamachi.service
 Wants=network-online.target logmein-hamachi.service
 [Service]
 ExecStartPre=/bin/sleep 10
-ExecStart=/home/nickdb/Project/testing/apiHSB.sh
+ExecStart=/usr/local/bin/Project/testing/apiHSB.sh
 Environment="HOME=/home/nickdb" "OPPIP=25.2.97.87"
 [Install]
 WantedBy=multi-user.target apiListener.service                          

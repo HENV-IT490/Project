@@ -57,7 +57,7 @@
           'ingredientName' => $urlIngredient
         )
      );
-     $url="https://gethatrecipe.com/Front/apiClient.php?" ;
+     $url="https://gethatrecipe.com/Front/apiClient.php?";
      $jsonAlt=file_get_contents($url.$getdata,false);
         echo "<ul style='line-height:10%'><li> $ingredientName alternative: $jsonAlt </li></ul>";
       }
@@ -130,7 +130,7 @@ $.post('https://gethatrecipe.com/Front/dbClient.php', { username: username, favo
 </script>";
 
 //adding to history
-echo "<script>
+/*echo "<script>
 
 var username=sessionStorage.getItem('username');
 
@@ -140,7 +140,7 @@ $.post('https://gethatrecipe.com/Front/dbClient.php',{ username: username, recip
 }
 );
 
-</script>";
+</script>";*/
 
 echo"<script>
 
