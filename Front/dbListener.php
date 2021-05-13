@@ -332,6 +332,10 @@ function requestProcessor($request)
       return makeCustom($request['recipe'],$request['customName'],$request['instructions'],$request['ingredients']);
     case "getCustom":
       return getCustom($request['recipe']);
+    case "addHistory":
+      return addHistory($request['username'],$request['recipeID'],$request['recipeName']);
+    case "getHistory":
+      return getHistory($request['username']);
   }
   return array("returnCode" => '0', 'message'=>"Server received request and processed");
 }

@@ -144,13 +144,14 @@ $.post('https://$host/Front/dbClient.php', { username: username, favoriteID: fav
 </script>";
 
 //adding to history
-echo "<script>
+/*echo "<script>
 
 var username=sessionStorage.getItem('username');
-
+console.log(username);
+console.log($recipeID);
+console.log($recipe);
 $.post('https://$host/Front/dbClient.php',{ username: username, recipeID: $recipeID, recipeName: '$recipe', type: 'addHistory'});
-
-</script>";
+</script>";*/
 
 echo"<script>
 
