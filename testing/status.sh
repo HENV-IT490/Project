@@ -25,7 +25,7 @@ if [ "$status" == "slave" ]
 then  
     echo "Using Slave commands"
     #do necessary slave commands for master slave
-    mysql -u$user test -Bse "stop slave;reset master;reset slave;start slave;"
+    mysql -u$user projectdb -Bse "stop slave;reset master;reset slave;start slave;"
 fi 
 
 #Host is slave, but can be promoted if master can't be pinged 5 times within 30 seconds
@@ -49,7 +49,7 @@ done
 sed -i "s/STATUS=.*/STATUS='master'/g" /usr/local/bin/myenv.conf
 echo "Host is now Master, using commands."
 #insert mysql commands to switch slave to master/master commands
-mysql -u$user test -Bse "stop slave; reset slave;"
+mysql -u$user projectdb -Bse "stop slave; reset slave;"
 exec bash
 
 
