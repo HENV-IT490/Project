@@ -22,7 +22,31 @@
 		  </div>
 
 	
-      <script src="https://code.jquery.com/jquery-3.6.0.min.js""></script>
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	  <script>
+		$(document).ready(function(){
+		  
+		
+  
+		  var username=sessionStorage.getItem('username');
+		  console.log(username);
+		  $.post('https://gethatrecipe.com/Front/dbClient.php', {type: 'getHistory', username: 'testing'}, function(data){
+			console.log(data);
+			console.log(data.history[0].recipeID);
+			console.log(data.history[0].recipeName);
+			for(var i=0; i < data.history.length; i+=1)
+			{
+			  //
+			  var baseURL="https://gethatrecipe.com/Front/recipe.php?recipeID="
+			  var recipeID = data.history[i].recipeID;
+			  var url = baseURL+recipeID;
+			  var recipeName = data.history[i].recipeName;
+			  console.log(url);
+			  $("<a/>").html(recipeName).attr('href',url).appendTo("#hist");
+			}
+		  });
+		});
+	  </script>
   <script>
 	$("#b1").click(function(){
 		var sessionStorage= window.sessionStorage;
