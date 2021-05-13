@@ -301,13 +301,7 @@ function requestProcessor($request)
 {
   echo "received request".PHP_EOL;
   var_dump($request);
-  $HOME=getenv('HOME');
-  $state=file_get_contents($HOME .'/myenv.conf');
 
-  if( $state == 'STATUS=slave'){
-    sendLog(__FILE__.":".__LINE__.":"."Database HSB received Request".PHP_EOL);
-    return false;
-  }
   if(!isset($request['type']))
   {
     return "ERROR: unsupported message type";
@@ -377,19 +371,19 @@ if ($status != 'master'){
   echo "status == master";
 }
 */
-
-/*while (true){
-  $getEnv=file_get_contents('/home/nickdb/myenv.conf');
+$state=true
+while (true){
+  $getEnv=file_get_contents('/usr/local/bin/myenv.conf');
   echo $getEnv;
   if($getEnv == "STATUS='master'"){
       echo"This is master";
-  
+      $state=false;
   }
   else if ($getEnv == "STATUS='slave'"){
       echo" This is slave";
+      sleep(5);
   }
-  sleep(5);
-  }*/
+};
 $server = new rabbitMQServer(__DIR__."/../ini/dbRabbitMQ.ini","dbListener");
 
 echo "testRabbitMQServer BEGIN".PHP_EOL;

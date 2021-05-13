@@ -43,14 +43,7 @@ function getSimilarRecipe($recipeID){
   
 
 function requestProcessor($request)
-{ /*
-  $getEnv=file_get_contents($HOME.'/myenv.conf');
-  echo $getEnv;
-  if($getEnv != "STATUS='PRIMARY'"){
-      echo"This is HSB, request not completed";
-      return;
-  }
-  */
+{ 
   var_dump($request);
   switch($request['type']){
     case 'getName':
@@ -66,7 +59,17 @@ function requestProcessor($request)
   
   //exec("python3 testing.py " .$request,$recipes);
 }
-$HOME=getenv('HOME');
+
+$state=true;
+While($state == true){
+$getEnv=file_get_contents('/usr/local/bin/myenv.conf');
+
+if($getEnv != "STATUS='PRIMARY'"){
+    echo"This is HSB, request not completed";
+    sleep(10);
+}
+else $state=false;
+}
 $server = new rabbitMQServer(__DIR__."/../ini/apiRabbitMQ.ini","apiListener");
 $apiKey="apiKey=e0dfc176edf3449794fdc1aa311bc990";
 echo "testRabbitMQServer BEGIN".PHP_EOL;
