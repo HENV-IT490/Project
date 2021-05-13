@@ -3,7 +3,7 @@
 require_once(__DIR__.'/../RabbitMQ/path.inc');
 require_once(__DIR__.'/../RabbitMQ/get_host_info.inc');
 require_once(__DIR__.'/../RabbitMQ/rabbitMQLib.inc');
-ini_set('display_errors',1);
+
 
 function getRecipe($recipeID)
 {

@@ -54,7 +54,6 @@
 require_once('../RabbitMQ/path.inc');
 require_once('../RabbitMQ/get_host_info.inc');
 require_once('../RabbitMQ/rabbitMQLib.inc');
-ini_set('display_errors',1);
 $host = $_SERVER['HTTP_HOST'];
 $recipe=$_GET['recipe'];
 echo"<div align=left>

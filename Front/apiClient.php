@@ -3,7 +3,6 @@
     require_once('../RabbitMQ/path.inc');
     require_once('../RabbitMQ/get_host_info.inc');
     require_once('../RabbitMQ/rabbitMQLib.inc');
-    ini_set('display_errors',1);
     session_start();
   
     $client = new rabbitMQClient("../ini/apiRabbitMQ.ini","apiListener");
