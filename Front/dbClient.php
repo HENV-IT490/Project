@@ -23,7 +23,7 @@ if (isset($_POST['submit']))
 
 		if ($response==false){
 			echo ("false");
-			header("Location: http://25.9.149.99/Front/index.html");
+			header("Location: https://gethatrecipe.com/Front/index.html");
 		}
 
 		echo "<script>
@@ -41,7 +41,7 @@ if (isset($_POST['submit']))
 		//might have JS check if passwords are equal before allowing
 		//to submit if we have pw confirm.
 		$response= $client->send_request($request);
-		header("refresh:0; url=http://25.9.149.99/Front/index.html");
+		header("refresh:0; url=https://gethatrecipe.com/Front/index.html");
   		//if response is true aka the account create
 		//redirect to another page or have them login now
 		//else, tell them account already exists or (later on we
