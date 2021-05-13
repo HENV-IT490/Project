@@ -341,14 +341,13 @@ function cleanseInput($input,$db){
 	$input=mysqli_real_escape_string($db,$input);
 	$input= trim($input);
 	return($input);
-
 }
 
 
 
 function dbConnect(){
 
-	$db=mysqli_connect("127.0.0.1",'Admin','letsgetanA','projectdb');
+	$db=mysqli_connect('localhost','dbroot','123','projectdb');
          if(mysqli_connect_error() ){
 		 echo "Data base could not be reached" .PHP_EOL;
 		 //maybe add log function (make server a client)
