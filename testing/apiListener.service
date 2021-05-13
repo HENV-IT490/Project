@@ -1,0 +1,9 @@
+[Unit]
+After=apiHSB.service
+Wants=apiHSB.service
+[Service]
+ExecStart=/usr/local/bin/Project/Front/apiListener.php
+Environment='HOME=/home/nickdb'
+ExecStartPre=/bin/sleep 30
+[Install]
+WantedBy=multi-user.target          
