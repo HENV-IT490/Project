@@ -44,12 +44,12 @@ function getSimilarRecipe($recipeID){
 
 function requestProcessor($request)
 { 
-  $getEnv=file_get_contents($HOME.'/myenv.conf');
+  /*$getEnv=file_get_contents($HOME.'/myenv.conf');
   echo $getEnv;
   if($getEnv != "STATUS='PRIMARY'"){
       echo"This is HSB, request not completed";
       return;
-  }
+  }*/
   
   var_dump($request);
   switch($request['type']){
